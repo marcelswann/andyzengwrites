@@ -1,1 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Influences — Andy Zeng</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="wrap">
+    <nav class="nav">
+      <a class="brand" href="/">Andy Zeng</a>
+      <div class="links">
+        <a href="/writing.html">Writing</a>
+        <a href="/about.html">About</a>
+        <a class="active" href="/influences.html">Influences</a>
+        <a href="mailto:youremail@example.com">Contact</a>
+      </div>
+    </nav>
+  </header>
 
+  <main class="wrap">
+    <h1>Influences</h1>
+    <p class="lede">A running list of lines I return to.</p>
+
+    <section class="section">
+      <ul class="quotes">
+        <!-- Alphabetical by author tag (as provided) -->
+
+        <li class="quote">
+          <blockquote>“Lord, make me chaste, but not yet.”</blockquote>
+          <div class="attrib">— AA</div>
+        </li>
+
+        <li class="quote">
+          <blockquote>No worthy problem is ever solved in the plane of its original conception.</blockquote>
+          <div class="attrib">— AE</div>
+        </li>
+
+        <li class="quote">
+          <blockquote>The activity of God, which surpasses all others in blessedness, must be contemplation.</blockquote>
+          <div class="attrib">— Aristotle</div>
+        </li>
+
+        <li class="quote">
+          <blockquote>Translated: In Kyoto, hearing the cuckoo, I long for Kyoto.</blockquote>
+          <div class="attrib">— Bashō</div>
+        </li>
+
+        <li class="quote">
+          <blockquote>There is no such joy in the tavern as upon the road thereto.</blockquote>
+          <div class="attrib">— CM</div>
+        </li>
+
+        <li class="quote">
+          <blockquote>
+            “words are concepts, but concepts are lines, which is to say, number systems attached to a particular dimension of the multiplicities (strata, molecular chains, lines of flight or rupture, circles of convergence, etc.).”
+          </blockquote>
+          <div class="attrib">— DG</div>
+        </li>
+
+        <li class="quote">
+          <blockquote>
+            On ne peut penser et écrire qu’assis (G. Flaubert). Here I have got you, you nihilist! A sedentary life is the real sin against the Holy Spirit. Only those thoughts that come by walking have any value.
+          </blockquote>
+          <div class="attrib">— FN</div>
+        </li>
+
+        <li class="quote">
+          <blockquote>soyons vrais même si nous sommes laids</blockquote>
+          <div class="attrib">— GC</div>
+        </li>
+
+        <li class="quote">
+          <blockquote>trouve avant de chercher</blockquote>
+          <div class="attrib">— PV</div>
+        </li>
+
+        <li class="quote">
+          <blockquote>Regarder, c'est-à-dire oublier le nom des choses que l'on voit.</blockquote>
+          <div class="attrib">— PV</div>
+        </li>
+
+        <li class="quote">
+          <blockquote>Forsan et haec olim meminisse iuvabit</blockquote>
+          <div class="attrib">— Virgil</div>
+        </li>
+
+        <li class="quote">
+          <blockquote>“Now I am terrified at the Earth, it is that calm and patient, It grows such sweet things out of such corruptions”</blockquote>
+          <div class="attrib">— WW</div>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <p class="small"><a href="/">Home</a></p>
+  </footer>
+</body>
+</html>
+
+
+.quotes { list-style: none; padding: 0; margin: 0; }
+.quote { padding: 18px 0; border-top: 1px solid var(--rule); }
+.quote blockquote { margin: 0; font-size: 18px; color: var(--text); }
+.attrib { margin-top: 8px; font-size: 14px; color: var(--muted); }
