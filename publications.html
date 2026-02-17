@@ -20,50 +20,95 @@
   </header>
 
   <main class="wrap">
-    <h1>Publications</h1>
-    <p class="lede">Selected publications and forthcoming work.</p>
+    <div class="panel">
+      <div class="panel-inner">
+        <h1 class="title">Publications</h1>
+        <p class="lede">Selected publications and forthcoming work.</p>
 
-    <section class="section">
-      <h2>Forthcoming</h2>
-      <ul class="pubs">
-        <li class="pub">
-          <div class="pub-title"><em>All Such Labor Is a Labor of Love</em></div>
-          <div class="pub-meta"> June 2027, Emerge Literary Journal</div>
-        </li>
+        <div class="inf-bar" aria-hidden="true">
+          <span class="inf-bar__label">LIST</span>
+          <span class="inf-bar__dots">• • •</span>
+          <span class="inf-bar__label">UPDATED</span>
+        </div>
 
-        <li class="pub">
-          <div class="pub-title"><em>On Borrowed Tongue</em></div>
-          <div class="pub-meta"> March 2026, Identity Theory</div>
-        </li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <h2>Out</h2>
-      <ul class="pubs">
-        <li class="pub">
-          <div class="pub-title">
-            <a href="https://bendinggenres.com/osmanthus/" target="_blank" rel="noopener noreferrer">
-              <em>Osmanthus</em>
-            </a>
+        <!-- Forthcoming -->
+        <section class="pub-section" aria-label="Forthcoming">
+          <div class="pub-section__head">
+            <span class="pub-section__tag">Forthcoming</span>
+            <span class="pub-section__rule" aria-hidden="true"></span>
           </div>
-          <div class="pub-meta">Dec 2025, Issue Forty-Eight — <span class="pub-venue">Bending Genres</span></div>
-        </li>
 
-        <li class="pub">
-          <div class="pub-title">
-            <a href="https://www.harvardzeitgeist.com/1-articles/heartbreak" target="_blank" rel="noopener noreferrer">
-              <em>Heartbreaks in the Big Easy: Hegel’s Phenomenology of Love</em>
-            </a>
+          <div class="pub-list">
+            <article class="pub" id="labor">
+              <div class="pub-head">
+                <div class="pub-title"><em>All Such Labor Is a Labor of Love</em></div>
+                <div class="pub-date">June 2027</div>
+              </div>
+              <div class="pub-meta">
+                <span class="pub-venue">Emerge Literary Journal</span>
+              </div>
+            </article>
+
+            <article class="pub" id="borrowed">
+              <div class="pub-head">
+                <div class="pub-title"><em>On Borrowed Tongue</em></div>
+                <div class="pub-date">March 2026</div>
+              </div>
+              <div class="pub-meta">
+                <span class="pub-venue">Identity Theory</span>
+              </div>
+            </article>
           </div>
-          <div class="pub-meta">Fall 2023, Conceptions <span class="pub-venue">Zeitgeist (Harvard Review of Philosophy)</span></div>
-        </li>
-      </ul>
-    </section>
+        </section>
+
+        <!-- Out -->
+        <section class="pub-section" aria-label="Out">
+          <div class="pub-section__head">
+            <span class="pub-section__tag">Out</span>
+            <span class="pub-section__rule" aria-hidden="true"></span>
+          </div>
+
+          <div class="pub-list">
+            <article class="pub" id="osmanthus">
+              <div class="pub-head">
+                <div class="pub-title">
+                  <a href="https://bendinggenres.com/osmanthus/" target="_blank" rel="noopener noreferrer">
+                    <em>Osmanthus</em>
+                  </a>
+                </div>
+                <div class="pub-date">Dec 2025</div>
+              </div>
+              <div class="pub-meta">
+                Issue Forty-Eight — <span class="pub-venue">Bending Genres</span>
+              </div>
+            </article>
+
+            <article class="pub" id="zeitgeist">
+              <div class="pub-head">
+                <div class="pub-title">
+                  <a href="https://www.harvardzeitgeist.com/1-articles/heartbreak" target="_blank" rel="noopener noreferrer">
+                    <em>Heartbreaks in the Big Easy: Hegel’s Phenomenology of Love</em>
+                  </a>
+                </div>
+                <div class="pub-date">Fall 2023</div>
+              </div>
+              <div class="pub-meta">
+                Conceptions — <span class="pub-venue">Zeitgeist (Harvard Review of Philosophy)</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+      </div>
+    </div>
   </main>
 
   <footer class="wrap footer">
-    <p class="small"><a href="/">Home</a></p>
+    <p class="foot">© <span id="y"></span> Andy Zeng</p>
   </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
