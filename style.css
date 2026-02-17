@@ -455,3 +455,17 @@ main.wrap{
   flex: 1 1 auto;
   min-height: 0;     /* important for Safari */
 }
+
+/* HOME: remove the divider lines you don't want */
+body.home .section{
+  border-top: none;
+  padding-top: 0;
+}
+
+body.home .section + .section{
+  margin-top: 18px; /* keep spacing between Social + Email */
+}
+
+body.home .art-img{
+  border-top: none;
+}
