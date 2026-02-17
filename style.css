@@ -1,6 +1,6 @@
 :root {
-  /* slightly darker neutral beige so white text reads cleanly */
-  --bg: #d9d1c4;      /* darker warm beige */
+  /* background */
+  --bg: #eed9c4;      /* your chosen beige */
   --text: #ffffff;    /* white text */
   --muted: rgba(255,255,255,0.78);
 
