@@ -1,94 +1,58 @@
 :root {
-  /* base fallback (when image fails) */
-  --bg: #b4a68f;
-  --text: #ffffff;
-  --muted: rgba(255,255,255,0.82);
-  --rule: rgba(255, 255, 255, 0.28);
+  /* fallback if image fails */
+  --bg: #eed9c4;
 
+  /* type colors */
+  --text: rgba(255,255,255,0.94);
+  --muted: rgba(255,255,255,0.78);
+
+  /* lines */
+  --rule: rgba(255,255,255,0.26);
+
+  /* layout */
   --max: 920px;
 
+  /* type */
   --serif: ui-serif, Garamond, "EB Garamond", Georgia, serif;
   --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
 * { box-sizing: border-box; }
+html, body { height: 100%; }
 html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); }
 
 body {
+  min-height: 100vh;
   font: 16.5px/1.75 var(--serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-html, body { height: 100%; }              /* key */
-body { min-height: 100vh; }               /* key */
-
-/* HERO BACKGROUND IMAGE (make it cover the whole screen) */
+/* background: smaller / less dominant painting */
 body.has-hero {
+  background-color: var(--bg);
   background-image:
-    linear-gradient(to bottom, rgba(180,166,143,0.18), rgba(180,166,143,0.30)),
+    radial-gradient(ellipse at center, rgba(238,217,196,0.25), rgba(238,217,196,0.78)),
     url("/couture-romans.jpg");
-  background-size: cover;
-  background-position: center 30%;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-size: auto 78vh;     /* <- controls the painting “size” */
+  background-position: center 62%;
 }
 
-/* iOS/Safari often hates fixed backgrounds */
-@media (max-width: 900px) {
-  body.has-hero { background-attachment: scroll; }
+/* keep footer from floating awkwardly */
+body.has-hero {
+  display: flex;
+  flex-direction: column;
 }
-
-/* Make the layout feel centered + not stuck at the top */
-main.wrap {
-  padding-top: 34px;
-  padding-bottom: 48px;
-}
-
-/* --- the veil: smaller, lighter, more “designed” --- */
-.veil {
-  max-width: 72ch;
-  padding: 28px 28px;
-  border: 1px solid rgba(255,255,255,0.20);
-  background: rgba(20, 18, 16, 0.18);     /* much lighter than before */
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-
-/* tighten type a bit */
-h1 {
-  font-size: 56px;
-  line-height: 1.02;
-  margin: 0 0 12px;
-  font-weight: 600;
-}
-
-.lede { margin: 0 0 18px; }
-
-/* the two sections should feel connected, not like blocks */
-.two {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px 28px;
-  margin-top: 18px;
-}
-
-.section {
-  padding: 14px 0 0;
-  border-top: 1px solid rgba(255,255,255,0.22);
-}
-
-.section--tight { padding-top: 12px; }
-
-@media (max-width: 700px) {
-  .two { grid-template-columns: 1fr; }
-  h1 { font-size: 46px; }
-  .veil { padding: 22px 20px; }
-}
+body.has-hero main.wrap { flex: 1; }
 
 /* layout */
-.wrap { max-width: var(--max); margin: 0 auto; padding: 26px 22px; }
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 22px 22px;
+}
 
 /* nav */
 .nav {
@@ -97,12 +61,13 @@ h1 {
   justify-content: space-between;
   gap: 16px;
   border-bottom: 1px solid var(--rule);
-  padding-bottom: 14px;
+  padding-bottom: 12px;
 }
 
 .brand {
-  font-weight: 650;
-  letter-spacing: 0.2px;
+  font-family: var(--serif);
+  font-weight: 500;
+  letter-spacing: 0.02em;
   text-decoration: none;
   color: var(--text);
 }
@@ -112,7 +77,7 @@ h1 {
   text-decoration: none;
   color: var(--muted);
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
@@ -121,56 +86,48 @@ h1 {
 .links a.active {
   color: var(--text);
   text-decoration: underline;
-  text-decoration-color: rgba(255,255,255,0.78);
+  text-decoration-color: rgba(255,255,255,0.75);
   text-underline-offset: 4px;
 }
 
-/* content veil: improves readability WITHOUT tinting the whole page */
-.veil {
-  padding: 34px 0 10px;
-  max-width: 70ch;
-}
+/* main spacing */
+main.wrap { padding-top: 28px; padding-bottom: 36px; }
 
-.has-hero .veil {
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.28),
-    rgba(0,0,0,0.18)
-  );
-  padding: 34px 28px;
+/* panel: light, “paper” feel, minimal blur */
+.veil {
+  max-width: 72ch;
+  padding: 26px 28px;
   border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(30, 26, 22, 0.18); /* lighter than your previous overlay */
+  /* essentially no blur */
+  backdrop-filter: blur(0.5px);
+  -webkit-backdrop-filter: blur(0.5px);
 }
 
 /* typography */
-h1 {
-  font-size: 56px;
-  line-height: 1.02;
+.title {
+  font-size: 52px;
+  line-height: 1.03;
   margin: 0 0 12px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-weight: 400;            /* not bold */
+  letter-spacing: -0.01em;
 }
 
 .lede {
   font-size: 19px;
   color: var(--muted);
-  margin: 0 0 22px;
+  margin: 0 0 18px;
   max-width: 62ch;
 }
 
-/* two-column section grouping (still feels connected) */
-.two {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px 28px;
+/* sections (stacked, hierarchical) */
+.section {
+  padding: 14px 0 0;
+  border-top: 1px solid rgba(255,255,255,0.20);
+  margin-top: 16px;
 }
+.section--tight { margin-top: 14px; }
 
-@media (max-width: 700px) {
-  .two { grid-template-columns: 1fr; }
-  h1 { font-size: 46px; }
-  body.has-hero { background-attachment: scroll; }
-}
-
-/* section headers */
 h2 {
   font-size: 12px;
   margin: 0 0 10px;
@@ -181,12 +138,13 @@ h2 {
   font-family: var(--sans);
 }
 
-/* tighter sections so it reads like one composition */
-.section {
-  padding: 16px 0 0;
-  border-top: 1px solid var(--rule);
+.small {
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.86);
+  font-family: var(--sans);
+  letter-spacing: 0.02em;
+  margin: 0;
 }
-.section--tight { padding-top: 14px; }
 
 /* links */
 a {
@@ -196,17 +154,16 @@ a {
 }
 a:hover { text-decoration-color: rgba(255,255,255,0.92); }
 
-.small {
-  font-size: 13.5px;
-  color: rgba(255,255,255,0.86);
-  font-family: var(--sans);
-  letter-spacing: 0.02em;
-  margin: 0;
-}
-
 /* footer */
 .footer {
   border-top: 1px solid var(--rule);
-  margin-top: 28px;
   padding-top: 14px;
+  padding-bottom: 18px;
+}
+
+/* mobile tweaks */
+@media (max-width: 700px) {
+  .veil { padding: 22px 18px; }
+  .title { font-size: 44px; }
+  body.has-hero { background-size: auto 64vh; }
 }
