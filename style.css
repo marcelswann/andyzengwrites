@@ -247,3 +247,83 @@ a:hover{
   .title{ font-size: 42px; }
   .art-img{ max-height: 320px; }
 }
+
+/* --- Influences page components --- */
+.inf-bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 0 0;
+  margin: 6px 0 18px;
+  border-top: 1px solid rgba(255,255,255,0.16);
+  color: rgba(255,255,255,0.72);
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.inf-bar__dots{
+  letter-spacing: 0.28em;
+  opacity: 0.7;
+}
+
+.influences{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.inf{
+  padding: 16px 0 0;
+  border-top: 1px solid rgba(255,255,255,0.16);
+}
+
+.inf:first-child{
+  border-top: none;
+  padding-top: 0;
+}
+
+.inf-head{
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.inf-tag{
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.88);
+  font-weight: 650;
+}
+
+.inf-rule{
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.14);
+  transform: translateY(-3px);
+}
+
+.inf-meta{
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.68);
+}
+
+.inf-quote{
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.90);
+  max-width: 74ch;
+}
+
+@media (max-width: 720px){
+  .inf-quote{ font-size: 16.5px; }
+}
