@@ -1,6 +1,6 @@
 :root {
   /* Page background (inside the mat) */
- --bg: #908472; 
+  --bg: #908472;
 
   /* White type */
   --text: rgba(255,255,255,0.94);
@@ -10,9 +10,9 @@
   --rule: rgba(255,255,255,0.22);
 
   /* Panel */
-  --panel: rgba(255,255,255,0.10);       /* unified surface */
+  --panel: rgba(255,255,255,0.10);
   --panel-border: rgba(255,255,255,0.18);
-  
+
   /* Layout */
   --max: 980px;
 
@@ -21,8 +21,8 @@
   --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
 
   /* Frame (white mat) */
-  --frame: 16px;                         /* thickness of the white border/mat */
-  --frame-color: rgba(255,255,255,0.55); /* optional inner hairline */
+  --frame: 16px;
+  --frame-color: rgba(255,255,255,0.55);
 }
 
 * { box-sizing: border-box; }
@@ -35,14 +35,18 @@ html, body {
 
 /* Thick white mat */
 body {
-  min-height: 100svh; /* iOS-friendly viewport */
+  min-height: 100svh;
   padding: var(--frame);
-  background: #ffffff; /* this is the mat */
+  background: #ffffff;
 
   font: 16.5px/1.75 var(--serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+
+  /* page fill behavior */
+  display: flex;
+  flex-direction: column;
 }
 
 /* Beige page background INSIDE the mat */
@@ -52,10 +56,10 @@ body::before{
   inset: var(--frame);
   background: var(--bg);
   pointer-events: none;
-  z-index: -1; /* behind all content */
+  z-index: -1;
 }
 
-/* Optional inner hairline at the mat edge (looks “framed”) */
+/* Optional inner hairline at the mat edge */
 body::after{
   content:"";
   position: fixed;
@@ -63,12 +67,12 @@ body::after{
   border: 1px solid var(--frame-color);
   pointer-events: none;
   z-index: 9999;
-  border-radius: 2px; /* set 0 for sharp corners */
+  border-radius: 2px;
 }
 
 /* Wrap + safe areas for iOS notch/home indicator */
 .wrap{
-  max-width: none;               /* allow full width */
+  max-width: none;
   margin: 0;
   padding:
     18px
@@ -124,22 +128,34 @@ body::after{
   text-underline-offset: 4px;
 }
 
-.panel{
-  margin-top: 0;                 /* so it starts right under nav */
-  border: 1px solid var(--panel-border);
-  background: var(--panel);
-  box-shadow: none;              /* no shadow */
+/* Keep header/footer from stretching */
+header.wrap, footer.wrap{ flex: 0 0 auto; }
+
+/* Let main take remaining height */
+main.wrap{
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
 }
 
-/* text area */
+/* PANEL fills the rest */
+.panel{
+  margin-top: 0;
+  border: 1px solid var(--panel-border);
+  background: var(--panel);
+  box-shadow: none;
+
+  flex: 1 1 auto;
+  min-height: 0; /* important for Safari */
+}
+
 /* inner container keeps typography centered even when panel is full-bleed */
 .panel-inner{
   max-width: var(--max);
   margin: 0 auto;
-  padding: 26px 26px 18px;
+  padding: 26px 26px 14px;
 }
 
-/* title not bold */
 .title{
   margin: 0 0 12px;
   font-size: 48px;
@@ -162,6 +178,14 @@ body::after{
   border-top: 1px solid rgba(255,255,255,0.16);
 }
 
+/* ✅ remove the “weird line” right above the painting:
+   the last text section (Email) should NOT add a top-rule under it */
+.panel-inner .section:last-of-type{
+  border-top: none;
+  padding-top: 0;
+  margin-top: 10px;
+}
+
 h2{
   margin: 0 0 10px;
   font-family: var(--sans);
@@ -180,26 +204,21 @@ h2{
   letter-spacing: 0.02em;
 }
 
-/* --- ART (mat + frame) --- */
+/* --- ART (lighter + centered + less bottom-heavy) --- */
 .art{
   margin: 0;
-  padding: 18px 22px 18px;        /* gives breathing room inside the panel */
+  padding: 18px 22px 22px;
 }
 
-/* “mat” + frame wrapper */
+/* Center the artwork block and make it narrower than the panel */
 .art-frame{
-  background: rgba(255,255,255,0.10);      /* mat */
-  padding: 12px;                           /* mat thickness */
-  border: 1px solid rgba(255,255,255,0.22);
-  box-shadow: 0 10px 26px rgba(0,0,0,0.18); /* artsy lift, only on the painting */
-}
+  width: min(760px, 100%);
+  margin: 0 auto;
 
-/* thin inner hairline */
-.art-frame::after{
-  content:"";
-  display:block;
-  border: 1px solid rgba(255,255,255,0.18);
-  margin-top: 0;
+  background: rgba(255,255,255,0.08);
+  padding: 10px; /* thinner mat */
+  border: 1px solid rgba(255,255,255,0.22);
+  box-shadow: none; /* no drop shadow */
 }
 
 /* image stays inside frame */
@@ -208,20 +227,24 @@ h2{
   width: 100%;
   height: auto;
   max-width: 100%;
-  max-height: 420px;               /* keeps it from dominating */
+  max-height: 280px; /* key: reduce dominance */
   object-fit: cover;
   object-position: center 62%;
-  border: 1px solid rgba(255,255,255,0.26); /* inner frame line */
+  border: 1px solid rgba(255,255,255,0.22);
 }
 
-/* caption stays aligned with the frame */
+/* caption aligned with the frame */
 .art-cap{
-  margin: 10px 0 0;
+  margin: 8px 0 0;
+  padding: 0;
+  text-align: center;
+
   font-family: var(--sans);
   font-size: 11.5px;
   color: rgba(255,255,255,0.78);
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  opacity: 0.9;
 }
 
 /* Links */
@@ -251,10 +274,12 @@ a:hover{
 
 /* Responsive */
 @media (max-width: 720px){
-  :root { --frame: 22px; } /* slightly smaller mat on phones */
-  .panel-inner{ padding: 22px 18px 18px; }
+  :root { --frame: 22px; }
+  .panel-inner{ padding: 22px 18px 14px; }
   .title{ font-size: 42px; }
-  .art-img{ max-height: 320px; }
+
+  .art{ padding: 16px 18px 20px; }
+  .art-img{ max-height: 240px; }
 }
 
 /* --- Influences page components --- */
@@ -317,6 +342,7 @@ a:hover{
   transform: translateY(-3px);
 }
 
+/* (If you remove “Aphorism/Maxim/etc” from HTML, this can stay harmless) */
 .inf-meta{
   font-family: var(--sans);
   font-size: 11px;
@@ -338,7 +364,6 @@ a:hover{
 }
 
 /* --- Publications page components (match Influences refinement) --- */
-
 .pub-section{
   margin-top: 18px;
 }
@@ -438,29 +463,4 @@ a:hover{
   .pub-head{ flex-direction: column; align-items: flex-start; gap: 6px; }
   .pub-date{ white-space: normal; }
   .pub-title{ font-size: 16.5px; }
-}
-
-/* Make the page fill the viewport */
-body{
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Keep your header/footer from stretching */
-header.wrap, footer.wrap{
-  flex: 0 0 auto;
-}
-
-/* Let main take remaining height */
-main.wrap{
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Make the panel fill the rest */
-.panel{
-  flex: 1 1 auto;
-  min-height: 0;     /* important for Safari */
 }
