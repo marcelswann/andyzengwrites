@@ -1,75 +1,57 @@
 :root {
-  /* fallback if image fails */
-  --bg: #b4a68f;
+  /* Beige system (your palette) */
+  --b0: #b4a68f;
+  --b1: #a29580;
+  --b2: #908472;
+  --b3: #7d7464;
 
-  /* type colors */
-  --text: rgba(255,255,255,0.94);
-  --muted: rgba(255,255,255,0.78);
+  --t0: #f0ede8; /* background */
+  --t1: #f7f6f3; /* card */
+  --t2: #e8e4dd; /* subtle fills */
+  --t3: #d9d2c7; /* topbar */
+  --t4: #cac0b0; /* borders */
 
-  /* lines */
-  --rule: rgba(255,255,255,0.26);
+  /* Type */
+  --ink: #24211c;
+  --muted: #5a5347;
 
-  /* layout */
-  --max: 920px;
-
-  /* type */
+  --max: 1040px;
   --serif: ui-serif, Garamond, "EB Garamond", Georgia, serif;
-  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
 }
 
 * { box-sizing: border-box; }
-html, body { height: 100%; }
-html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); }
+html, body { margin: 0; padding: 0; background: var(--t0); color: var(--ink); }
 
 body {
-  min-height: 100vh;
   font: 16.5px/1.75 var(--serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-/* background: smaller / less dominant painting */
-body.has-hero {
-  background-color: var(--bg);
-  background-image:
-    radial-gradient(ellipse at center, rgba(238,217,196,0.25), rgba(238,217,196,0.78)),
-    url("/couture-romans.jpg");
-  background-repeat: no-repeat;
-  background-size: auto 78vh;     /* <- controls the painting “size” */
-  background-position: center 62%;
+.wrap { max-width: var(--max); margin: 0 auto; padding: 18px 22px; }
+
+/* Topbar uses a darker beige to anchor the page */
+.topbar {
+  background: var(--t3);
+  border-bottom: 1px solid var(--t4);
 }
 
-/* keep footer from floating awkwardly */
-body.has-hero {
-  display: flex;
-  flex-direction: column;
-}
-body.has-hero main.wrap { flex: 1; }
-
-/* layout */
-.wrap {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 22px 22px;
-}
-
-/* nav */
+/* Nav */
 .nav {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 16px;
-  border-bottom: 1px solid var(--rule);
-  padding-bottom: 12px;
+  padding: 10px 0;
 }
 
 .brand {
-  font-family: var(--serif);
+  text-decoration: none;
+  color: var(--ink);
   font-weight: 500;
   letter-spacing: 0.02em;
-  text-decoration: none;
-  color: var(--text);
 }
 
 .links a {
@@ -82,88 +64,110 @@ body.has-hero main.wrap { flex: 1; }
   text-transform: uppercase;
 }
 
-.links a:hover { color: var(--text); }
+.links a:hover { color: var(--ink); }
 .links a.active {
-  color: var(--text);
+  color: var(--ink);
   text-decoration: underline;
-  text-decoration-color: rgba(255,255,255,0.75);
+  text-decoration-color: rgba(36,33,28,0.4);
   text-underline-offset: 4px;
 }
 
-/* main spacing */
-main.wrap { padding-top: 28px; padding-bottom: 36px; }
-
-/* panel: light, “paper” feel, minimal blur */
-.veil {
-  max-width: 72ch;
-  padding: 26px 28px;
-  border: 1px solid rgba(255,255,255,0.18);
-  background: rgba(30, 26, 22, 0.18); /* lighter than your previous overlay */
-  /* essentially no blur */
-  backdrop-filter: blur(0.5px);
-  -webkit-backdrop-filter: blur(0.5px);
+/* Layout: clean two-column, art smaller */
+.layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 26px;
+  padding-top: 26px;
+  padding-bottom: 18px;
 }
 
-/* typography */
+/* Card: “paper” */
+.card {
+  background: var(--t1);
+  border: 1px solid var(--t4);
+  padding: 26px 26px 22px;
+}
+
+/* Typography */
 .title {
-  font-size: 52px;
-  line-height: 1.03;
   margin: 0 0 12px;
-  font-weight: 400;            /* not bold */
+  font-size: 48px;
+  line-height: 1.06;
+  font-weight: 400; /* not bold */
   letter-spacing: -0.01em;
 }
 
 .lede {
-  font-size: 19px;
-  color: var(--muted);
   margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 18.5px;
   max-width: 62ch;
 }
 
-/* sections (stacked, hierarchical) */
 .section {
-  padding: 14px 0 0;
-  border-top: 1px solid rgba(255,255,255,0.20);
   margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--t4);
 }
-.section--tight { margin-top: 14px; }
 
 h2 {
-  font-size: 12px;
   margin: 0 0 10px;
-  font-weight: 650;
+  font-family: var(--sans);
+  font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.82);
-  font-family: var(--sans);
+  color: var(--b3);
+  font-weight: 650;
 }
 
-.small {
-  font-size: 13.5px;
-  color: rgba(255,255,255,0.86);
-  font-family: var(--sans);
-  letter-spacing: 0.02em;
+.meta {
   margin: 0;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
 }
 
-/* links */
-a {
-  color: inherit;
-  text-decoration-color: rgba(255,255,255,0.55);
-  text-underline-offset: 3px;
-}
-a:hover { text-decoration-color: rgba(255,255,255,0.92); }
+/* Links */
+a { color: inherit; text-decoration-color: rgba(90,83,71,0.45); text-underline-offset: 3px; }
+a:hover { text-decoration-color: rgba(36,33,28,0.75); }
 
-/* footer */
-.footer {
-  border-top: 1px solid var(--rule);
-  padding-top: 14px;
-  padding-bottom: 18px;
+/* Art: framed, smaller, and “gallery” */
+.art-frame {
+  margin: 0;
+  background: var(--t2);
+  border: 1px solid var(--t4);
+  padding: 14px;
 }
 
-/* mobile tweaks */
-@media (max-width: 700px) {
-  .veil { padding: 22px 18px; }
-  .title { font-size: 44px; }
-  body.has-hero { background-size: auto 64vh; }
+.art-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid rgba(36,33,28,0.08);
+}
+
+.art-cap {
+  margin-top: 10px;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--b3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Footer */
+.footer { padding-top: 10px; padding-bottom: 22px; }
+.foot {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--b3);
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; }
+  .title { font-size: 42px; }
 }
