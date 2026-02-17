@@ -1,5 +1,5 @@
 :root {
-  /* Page background */
+  /* Page background (inside the mat) */
   --bg: #c3b7a5;
 
   /* White type */
@@ -20,9 +20,9 @@
   --serif: ui-serif, Garamond, "EB Garamond", Georgia, serif;
   --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
 
-  /* Frame (white border) */
-  --frame: 10px;
-  --frame-color: rgba(255,255,255,0.75);
+  /* Frame (white mat) */
+  --frame: 36px;                         /* thickness of the white border/mat */
+  --frame-color: rgba(255,255,255,0.55); /* optional inner hairline */
 }
 
 * { box-sizing: border-box; }
@@ -30,21 +30,33 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: var(--bg);
   color: var(--text);
 }
 
+/* Thick white mat */
 body {
   min-height: 100svh; /* iOS-friendly viewport */
   padding: var(--frame);
+  background: #ffffff; /* this is the mat */
+
   font: 16.5px/1.75 var(--serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-/* White border frame */
+/* Beige page background INSIDE the mat */
 body::before{
+  content:"";
+  position: fixed;
+  inset: var(--frame);
+  background: var(--bg);
+  pointer-events: none;
+  z-index: -1; /* behind all content */
+}
+
+/* Optional inner hairline at the mat edge (looks “framed”) */
+body::after{
   content:"";
   position: fixed;
   inset: var(--frame);
@@ -222,6 +234,7 @@ a:hover{
 
 /* Responsive */
 @media (max-width: 720px){
+  :root { --frame: 22px; } /* slightly smaller mat on phones */
   .panel-inner{ padding: 22px 18px 18px; }
   .title{ font-size: 42px; }
   .art-img{ max-height: 320px; }
