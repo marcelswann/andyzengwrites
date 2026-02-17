@@ -21,14 +21,70 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* HERO BACKGROUND IMAGE */
+html, body { height: 100%; }              /* key */
+body { min-height: 100vh; }               /* key */
+
+/* HERO BACKGROUND IMAGE (make it cover the whole screen) */
 body.has-hero {
-  background:
-    linear-gradient(to bottom, rgba(180,166,143,0.42), rgba(180,166,143,0.58)),
+  background-image:
+    linear-gradient(to bottom, rgba(180,166,143,0.18), rgba(180,166,143,0.30)),
     url("/couture-romans.jpg");
   background-size: cover;
-  background-position: center 45%;
+  background-position: center 30%;
+  background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+/* iOS/Safari often hates fixed backgrounds */
+@media (max-width: 900px) {
+  body.has-hero { background-attachment: scroll; }
+}
+
+/* Make the layout feel centered + not stuck at the top */
+main.wrap {
+  padding-top: 34px;
+  padding-bottom: 48px;
+}
+
+/* --- the veil: smaller, lighter, more “designed” --- */
+.veil {
+  max-width: 72ch;
+  padding: 28px 28px;
+  border: 1px solid rgba(255,255,255,0.20);
+  background: rgba(20, 18, 16, 0.18);     /* much lighter than before */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* tighten type a bit */
+h1 {
+  font-size: 56px;
+  line-height: 1.02;
+  margin: 0 0 12px;
+  font-weight: 600;
+}
+
+.lede { margin: 0 0 18px; }
+
+/* the two sections should feel connected, not like blocks */
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 28px;
+  margin-top: 18px;
+}
+
+.section {
+  padding: 14px 0 0;
+  border-top: 1px solid rgba(255,255,255,0.22);
+}
+
+.section--tight { padding-top: 12px; }
+
+@media (max-width: 700px) {
+  .two { grid-template-columns: 1fr; }
+  h1 { font-size: 46px; }
+  .veil { padding: 22px 20px; }
 }
 
 /* layout */
