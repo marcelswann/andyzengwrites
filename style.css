@@ -1,6 +1,6 @@
 :root {
   /* Page background (inside the mat) */
-  --bg: #c3b7a5;
+ --bg: #908472; 
 
   /* White type */
   --text: rgba(255,255,255,0.94);
@@ -10,7 +10,7 @@
   --rule: rgba(255,255,255,0.22);
 
   /* Panel */
-  --panel: rgba(54,49,42,0.24);          /* unified surface */
+  --panel: rgba(255,255,255,0.10);       /* unified surface */
   --panel-border: rgba(255,255,255,0.18);
 
   /* Layout */
