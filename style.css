@@ -178,12 +178,26 @@ main.wrap{
   border-top: 1px solid rgba(255,255,255,0.16);
 }
 
-/* ✅ remove the “weird line” right above the painting:
-   the last text section (Email) should NOT add a top-rule under it */
+/* Keep dividers between sections... */
+.section{
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.16);
+}
+
+/* ✅ ...but remove the divider directly above the painting
+   (i.e., on the LAST section inside the panel-inner) */
 .panel-inner .section:last-of-type{
+  border-top: 1px solid rgba(255,255,255,0.16); /* keep the line above Email */
+}
+
+/* Remove the line that sits under Email (before the art) */
+.panel-inner{
+  padding-bottom: 8px; /* optional: tighten before art */
+}
+.panel-inner + .art{
+  /* ensures no accidental rule appears before art */
   border-top: none;
-  padding-top: 0;
-  margin-top: 10px;
 }
 
 h2{
