@@ -124,11 +124,13 @@ body::after{
   text-underline-offset: 4px;
 }
 
-/* ONE integrated panel (text + image), no nested boxes */
 .panel{
   margin-top: 26px;
   border: 1px solid var(--panel-border);
   background: var(--panel);
+  box-shadow:
+    0 28px 70px rgba(18,16,14,0.22),
+    0 8px 22px rgba(18,16,14,0.14);
 }
 
 /* text area */
@@ -177,13 +179,13 @@ h2{
   letter-spacing: 0.02em;
 }
 
-/* Painting integrated: no separate art background box */
 .art{
   margin: 0;
-  padding: 0;
+  padding: 14px;
+  border-top: 1px solid rgba(255,255,255,0.16);
 }
 
-/* Use a top rule to “attach” the image to the panel */
+
 .art-img{
   display: block;
   width: 100%;
@@ -193,7 +195,9 @@ h2{
   object-fit: cover;
   object-position: center 62%;
 
-  border-top: 1px solid rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.85);
+  outline: 1px solid rgba(18,16,14,0.16);
+  outline-offset: -6px;
 }
 
 /* Caption sits inside the same panel, not in a new box */
