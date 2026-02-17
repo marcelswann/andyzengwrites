@@ -24,6 +24,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* default wrap */
 .wrap { max-width: var(--max); margin: 0 auto; padding: 26px 22px; }
 
 /* nav */
@@ -113,15 +114,9 @@ a:hover {
   padding-top: 14px;
 }
 
-/* optional: subtle paper panel on wider screens */
-@media (min-width: 860px) {
-  .wrap {
-    background: linear-gradient(var(--surface), var(--surface));
-    border: 1px solid rgba(231, 220, 203, 0.55);
-    border-radius: 14px;
-    margin: 26px auto;
-    padding: 30px 34px;
-    box-shadow: 0 10px 30px rgba(30, 25, 18, 0.06);
-  }
-  body { padding: 12px; }
-}
+/* CHANGE #1: remove the “paper panel” card feel on wide screens */
+/* (deleted the previous @media (min-width: 860px) { .wrap { ... } body { ... } }) */
+
+/* CHANGE #2: homepage spacing (continuous column, less blocky) */
+main.wrap { padding-top: 18px; }
+main.wrap .small { margin-top: 10px; }
