@@ -1,10 +1,10 @@
 :root {
-  /* palette */
-  --bg: #fbf7ef;        /* warm cream */
-  --surface: #fffaf0;   /* slightly lighter cream for subtle contrast */
-  --text: #1a1a1a;      /* softer than pure black */
-  --muted: #5f5a52;     /* warm gray */
-  --rule: #e7dccb;      /* warm divider */
+  /* palette (dark, stylized) */
+  --bg: #0f0f10;        /* near-black */
+  --surface: #141416;   /* subtle lift */
+  --text: #f3f0e8;      /* warm off-white */
+  --muted: #c9c3b7;     /* warm muted */
+  --rule: rgba(243, 240, 232, 0.14);
 
   /* layout */
   --max: 820px;
@@ -18,14 +18,13 @@
 html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); }
 
 body {
-  font: 16.5px/1.7 var(--serif);
+  font: 16.5px/1.75 var(--serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-/* default wrap */
-.wrap { max-width: var(--max); margin: 0 auto; padding: 26px 22px; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 28px 22px; }
 
 /* nav */
 .nav {
@@ -38,10 +37,13 @@ body {
 }
 
 .brand {
-  font-weight: 650;
-  letter-spacing: 0.2px;
+  font-weight: 400;             /* not bold */
+  letter-spacing: 0.28em;       /* stylized */
+  text-transform: uppercase;
   text-decoration: none;
   color: var(--text);
+  font-family: var(--sans);
+  font-size: 12px;
 }
 
 .links a {
@@ -49,31 +51,33 @@ body {
   text-decoration: none;
   color: var(--muted);
   font-family: var(--sans);
-  font-size: 13.5px;
-  letter-spacing: 0.2px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 .links a:hover { color: var(--text); }
 .links a.active {
   color: var(--text);
   text-decoration: underline;
-  text-underline-offset: 4px;
+  text-decoration-color: rgba(243, 240, 232, 0.55);
+  text-underline-offset: 5px;
 }
 
 /* headings */
 h1 {
-  font-size: 42px;
-  line-height: 1.12;
-  margin: 22px 0 10px;
-  font-weight: 650;
-  letter-spacing: -0.3px;
+  font-size: 44px;
+  line-height: 1.08;
+  margin: 26px 0 10px;
+  font-weight: 400;             /* not bold */
+  letter-spacing: -0.2px;
 }
 
 h2 {
-  font-size: 14px;
+  font-size: 12px;
   margin: 0 0 12px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-weight: 500;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--muted);
   font-family: var(--sans);
@@ -83,7 +87,7 @@ h2 {
 .lede {
   font-size: 19px;
   color: var(--muted);
-  margin: 0 0 26px;
+  margin: 0 0 20px;
   max-width: 62ch;
 }
 
@@ -98,25 +102,25 @@ h2 {
 /* links in body */
 a {
   color: inherit;
-  text-decoration-color: rgba(95, 90, 82, 0.55);
-  text-underline-offset: 3px;
+  text-decoration-color: rgba(243, 240, 232, 0.35);
+  text-underline-offset: 4px;
 }
 
 a:hover {
-  text-decoration-color: rgba(26, 26, 26, 0.75);
+  text-decoration-color: rgba(243, 240, 232, 0.7);
 }
 
 /* footer */
-.small { font-size: 13.5px; color: var(--muted); font-family: var(--sans); }
+.small { font-size: 12.5px; color: var(--muted); font-family: var(--sans); letter-spacing: 0.08em; }
 .footer {
   border-top: 1px solid var(--rule);
   margin-top: 34px;
   padding-top: 14px;
 }
 
-/* CHANGE #1: remove the “paper panel” card feel on wide screens */
-/* (deleted the previous @media (min-width: 860px) { .wrap { ... } body { ... } }) */
-
-/* CHANGE #2: homepage spacing (continuous column, less blocky) */
+/* homepage spacing */
 main.wrap { padding-top: 18px; }
 main.wrap .small { margin-top: 10px; }
+
+/* optional: nicer text selection */
+::selection { background: rgba(243, 240, 232, 0.16); }
