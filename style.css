@@ -68,8 +68,8 @@ body::after{
 
 /* Wrap + safe areas for iOS notch/home indicator */
 .wrap{
-  max-width: var(--max);
-  margin: 0 auto;
+  max-width: none;               /* allow full width */
+  margin: 0;
   padding:
     18px
     calc(22px + env(safe-area-inset-right))
@@ -132,7 +132,10 @@ body::after{
 }
 
 /* text area */
+/* inner container keeps typography centered even when panel is full-bleed */
 .panel-inner{
+  max-width: var(--max);
+  margin: 0 auto;
   padding: 26px 26px 18px;
 }
 
@@ -186,22 +189,25 @@ h2{
 
 .art-img{
   display: block;
-  width: 100%;
+  width: calc(100% - 52px);      /* match inner padding (26px * 2) */
+  max-width: var(--max);
+  margin: 0 auto;
   max-height: 420px;
   height: auto;
 
   object-fit: cover;
   object-position: center 62%;
 
-  border: 1px solid rgba(255,255,255,0.85);
+  border: 1px solid rgba(255,255,255,0.85);  /* thin white frame */
   outline: 1px solid rgba(18,16,14,0.16);
   outline-offset: -6px;
 }
 
-/* Caption sits inside the same panel, not in a new box */
 .art-cap{
-  margin: 0;
-  padding: 10px 14px 14px;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 10px 26px 16px;
+
   font-family: var(--sans);
   font-size: 11.5px;
   color: rgba(255,255,255,0.78);
