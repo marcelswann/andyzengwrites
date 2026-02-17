@@ -1,11 +1,11 @@
 :root {
-  /* neutral off-white beige */
-  --bg: #fbf7ef;      /* warm cream */
+  /* slightly darker neutral beige so white text reads cleanly */
+  --bg: #d9d1c4;      /* darker warm beige */
   --text: #ffffff;    /* white text */
   --muted: rgba(255,255,255,0.78);
 
-  /* use darker rules so they show on beige */
-  --rule: rgba(60, 52, 44, 0.18);
+  /* dividers */
+  --rule: rgba(255, 255, 255, 0.32);
 
   --max: 820px;
 
@@ -23,15 +23,11 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* IMPORTANT: remove the full-page dark overlay */
+/* no overlay, no drop shadow */
 body::before { content: none !important; }
+body, .brand, .links a, h1, h2, .lede, .small, a { text-shadow: none !important; }
 
 .wrap { max-width: var(--max); margin: 0 auto; padding: 26px 22px; }
-
-/* make white readable on beige without tinting the background */
-body, .brand, .links a, h1, h2, .lede, .small, a {
-  text-shadow: 0 1px 2px rgba(25, 20, 15, 0.35);
-}
 
 /* nav */
 .nav {
@@ -63,7 +59,7 @@ body, .brand, .links a, h1, h2, .lede, .small, a {
 .links a.active {
   color: var(--text);
   text-decoration: underline;
-  text-decoration-color: rgba(255,255,255,0.75);
+  text-decoration-color: rgba(255,255,255,0.8);
   text-underline-offset: 4px;
 }
 
@@ -108,7 +104,7 @@ a {
   text-decoration-color: rgba(255,255,255,0.6);
   text-underline-offset: 3px;
 }
-a:hover { text-decoration-color: rgba(255,255,255,0.9); }
+a:hover { text-decoration-color: rgba(255,255,255,0.95); }
 
 /* footer */
 .small { font-size: 13.5px; color: var(--muted); font-family: var(--sans); }
