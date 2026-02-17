@@ -125,12 +125,10 @@ body::after{
 }
 
 .panel{
-  margin-top: 26px;
+  margin-top: 0;                 /* so it starts right under nav */
   border: 1px solid var(--panel-border);
   background: var(--panel);
-  box-shadow:
-    0 28px 70px rgba(18,16,14,0.22),
-    0 8px 22px rgba(18,16,14,0.14);
+  box-shadow: none;              /* no shadow */
 }
 
 /* text area */
