@@ -430,3 +430,28 @@ a:hover{
   .pub-date{ white-space: normal; }
   .pub-title{ font-size: 16.5px; }
 }
+
+/* Make the page fill the viewport */
+body{
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Keep your header/footer from stretching */
+header.wrap, footer.wrap{
+  flex: 0 0 auto;
+}
+
+/* Let main take remaining height */
+main.wrap{
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make the panel fill the rest */
+.panel{
+  flex: 1 1 auto;
+  min-height: 0;     /* important for Safari */
+}
