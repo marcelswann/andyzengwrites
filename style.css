@@ -1,16 +1,16 @@
 :root {
-  /* palette (dark, stylized) */
-  --bg: #0f0f10;        /* near-black */
-  --surface: #141416;   /* subtle lift */
-  --text: #f3f0e8;      /* warm off-white */
-  --muted: #c9c3b7;     /* warm muted */
-  --rule: rgba(243, 240, 232, 0.14);
+  /* palette: beige paper + white type (stylized) */
+  --bg: #fbf7ef;                 
+  --surface: rgba(255,255,255,0.28);
+  --text: #ffffff;               
+  --muted: rgba(255,255,255,0.78);
+  --rule: rgba(255,255,255,0.28);
 
   /* layout */
   --max: 820px;
 
   /* type */
-  --serif: ui-serif, Georgia, "Times New Roman", Times, serif;
+  --serif: ui-serif, Garamond, "EB Garamond", Georgia, serif;
   --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
@@ -22,9 +22,20 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  position: relative;
 }
 
-.wrap { max-width: var(--max); margin: 0 auto; padding: 28px 22px; }
+/* subtle overlay so white text stays readable on beige */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 18, 16, 0.24);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 28px 22px; position: relative; z-index: 1; }
 
 /* nav */
 .nav {
@@ -37,8 +48,8 @@ body {
 }
 
 .brand {
-  font-weight: 400;             /* not bold */
-  letter-spacing: 0.28em;       /* stylized */
+  font-weight: 400;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--text);
@@ -60,7 +71,7 @@ body {
 .links a.active {
   color: var(--text);
   text-decoration: underline;
-  text-decoration-color: rgba(243, 240, 232, 0.55);
+  text-decoration-color: rgba(255, 255, 255, 0.65);
   text-underline-offset: 5px;
 }
 
@@ -69,7 +80,7 @@ h1 {
   font-size: 44px;
   line-height: 1.08;
   margin: 26px 0 10px;
-  font-weight: 400;             /* not bold */
+  font-weight: 400;
   letter-spacing: -0.2px;
 }
 
@@ -102,16 +113,21 @@ h2 {
 /* links in body */
 a {
   color: inherit;
-  text-decoration-color: rgba(243, 240, 232, 0.35);
+  text-decoration-color: rgba(255, 255, 255, 0.5);
   text-underline-offset: 4px;
 }
 
 a:hover {
-  text-decoration-color: rgba(243, 240, 232, 0.7);
+  text-decoration-color: rgba(255, 255, 255, 0.85);
 }
 
 /* footer */
-.small { font-size: 12.5px; color: var(--muted); font-family: var(--sans); letter-spacing: 0.08em; }
+.small {
+  font-size: 12.5px;
+  color: var(--muted);
+  font-family: var(--sans);
+  letter-spacing: 0.08em;
+}
 .footer {
   border-top: 1px solid var(--rule);
   margin-top: 34px;
@@ -122,5 +138,4 @@ a:hover {
 main.wrap { padding-top: 18px; }
 main.wrap .small { margin-top: 10px; }
 
-/* optional: nicer text selection */
-::selection { background: rgba(243, 240, 232, 0.16); }
+::selection { background: rgba(255, 255, 255, 0.22); }
