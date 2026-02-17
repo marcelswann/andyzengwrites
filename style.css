@@ -17,6 +17,36 @@
   --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
 }
 
+/* iOS safe-area support */
+:root{
+  --frame: 10px;                 /* thickness of the white border */
+  --frame-color: rgba(255,255,255,0.75);
+}
+
+/* Keep content away from iPhone notch/home indicator */
+.wrap{
+  padding-left: calc(22px + env(safe-area-inset-left));
+  padding-right: calc(22px + env(safe-area-inset-right));
+}
+
+/* White border around the entire site */
+body{
+  min-height: 100svh;            /* better on iOS than 100vh */
+  padding: var(--frame);
+  background: var(--bg);
+}
+
+/* The frame itself */
+body::before{
+  content:"";
+  position: fixed;
+  inset: var(--frame);
+  border: 1px solid var(--frame-color);
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 2px;            /* set to 0 if you want sharp corners */
+}
+
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); }
 
@@ -29,15 +59,29 @@ body{
 
 .wrap { max-width: var(--max); margin: 0 auto; padding: 18px 22px; }
 
-/* NAV (no colored bar, sits on page bg) */
-.nav {
+.nav{
+  position: sticky;
+  top: calc(var(--frame) + env(safe-area-inset-top));
+  z-index: 50;
+
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 16px;
-  padding: 10px 0 14px;
-  border-bottom: 1px solid rgba(255,255,255,0.18);
+
+  padding: 12px 14px;
+  margin-top: 6px;
+
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(54,49,42,0.18);       /* translucent over your beige */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  box-shadow: 0 8px 22px rgba(18,16,14,0.18);
 }
+
+/* remove the old bottom border if you had one */
+.nav{ border-bottom: none; }
 
 .brand {
   text-decoration: none;
