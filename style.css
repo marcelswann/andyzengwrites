@@ -1,42 +1,49 @@
 :root {
-  /* Page background = “old top bar color” */
+  /* Page background */
   --bg: #c3b7a5;
 
-  /* white type */
+  /* White type */
   --text: rgba(255,255,255,0.94);
   --muted: rgba(255,255,255,0.78);
+
+  /* Lines */
   --rule: rgba(255,255,255,0.22);
 
-  /* panel tone (darker beige from your shades) */
-  --panel: rgba(54,49,42,0.30);   /* #36312a-ish tint */
+  /* Panel */
+  --panel: rgba(54,49,42,0.24);          /* unified surface */
   --panel-border: rgba(255,255,255,0.18);
 
+  /* Layout */
   --max: 980px;
 
+  /* Type */
   --serif: ui-serif, Garamond, "EB Garamond", Georgia, serif;
   --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
-}
 
-/* iOS safe-area support */
-:root{
-  --frame: 10px;                 /* thickness of the white border */
+  /* Frame (white border) */
+  --frame: 10px;
   --frame-color: rgba(255,255,255,0.75);
 }
 
-/* Keep content away from iPhone notch/home indicator */
-.wrap{
-  padding-left: calc(22px + env(safe-area-inset-left));
-  padding-right: calc(22px + env(safe-area-inset-right));
-}
+* { box-sizing: border-box; }
 
-/* White border around the entire site */
-body{
-  min-height: 100svh;            /* better on iOS than 100vh */
-  padding: var(--frame);
+html, body {
+  margin: 0;
+  padding: 0;
   background: var(--bg);
+  color: var(--text);
 }
 
-/* The frame itself */
+body {
+  min-height: 100svh; /* iOS-friendly viewport */
+  padding: var(--frame);
+  font: 16.5px/1.75 var(--serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* White border frame */
 body::before{
   content:"";
   position: fixed;
@@ -44,21 +51,21 @@ body::before{
   border: 1px solid var(--frame-color);
   pointer-events: none;
   z-index: 9999;
-  border-radius: 2px;            /* set to 0 if you want sharp corners */
+  border-radius: 2px; /* set 0 for sharp corners */
 }
 
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); }
-
-body{
-  font: 16.5px/1.75 var(--serif);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+/* Wrap + safe areas for iOS notch/home indicator */
+.wrap{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding:
+    18px
+    calc(22px + env(safe-area-inset-right))
+    18px
+    calc(22px + env(safe-area-inset-left));
 }
 
-.wrap { max-width: var(--max); margin: 0 auto; padding: 18px 22px; }
-
+/* NAV: sticky + subtle blur, but NOT a box */
 .nav{
   position: sticky;
   top: calc(var(--frame) + env(safe-area-inset-top));
@@ -69,28 +76,24 @@ body{
   justify-content: space-between;
   gap: 16px;
 
-  padding: 12px 14px;
-  margin-top: 6px;
+  padding: 10px 0 14px;
+  margin: 0;
 
-  border: 1px solid rgba(255,255,255,0.18);
-  background: rgba(54,49,42,0.18);       /* translucent over your beige */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.18);
+  background: transparent;
 
-  box-shadow: 0 8px 22px rgba(18,16,14,0.18);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
-/* remove the old bottom border if you had one */
-.nav{ border-bottom: none; }
-
-.brand {
+.brand{
   text-decoration: none;
   color: var(--text);
   font-weight: 500;
   letter-spacing: 0.02em;
 }
 
-.links a {
+.links a{
   margin-left: 14px;
   text-decoration: none;
   color: var(--muted);
@@ -101,28 +104,28 @@ body{
 }
 
 .links a:hover { color: var(--text); }
-.links a.active {
+
+.links a.active{
   color: var(--text);
   text-decoration: underline;
   text-decoration-color: rgba(255,255,255,0.65);
   text-underline-offset: 4px;
 }
 
-/* Integrated panel: text + painting in one composition */
-.panel {
+/* ONE integrated panel (text + image), no nested boxes */
+.panel{
   margin-top: 26px;
   border: 1px solid var(--panel-border);
   background: var(--panel);
 }
 
-/* top (text) */
-.panel-inner {
-  padding: 26px 26px 22px;
-  border-bottom: 1px solid rgba(255,255,255,0.16);
+/* text area */
+.panel-inner{
+  padding: 26px 26px 18px;
 }
 
-/* title: not bold */
-.title {
+/* title not bold */
+.title{
   margin: 0 0 12px;
   font-size: 48px;
   line-height: 1.06;
@@ -130,21 +133,21 @@ body{
   letter-spacing: -0.01em;
 }
 
-.lede {
+.lede{
   margin: 0 0 18px;
   color: var(--muted);
   font-size: 18.5px;
   max-width: 62ch;
 }
 
-/* stacked hierarchy sections */
-.section {
+/* stacked hierarchy */
+.section{
   margin-top: 16px;
   padding-top: 14px;
   border-top: 1px solid rgba(255,255,255,0.16);
 }
 
-h2 {
+h2{
   margin: 0 0 10px;
   font-family: var(--sans);
   font-size: 12px;
@@ -154,7 +157,7 @@ h2 {
   font-weight: 650;
 }
 
-.meta {
+.meta{
   margin: 0;
   font-family: var(--sans);
   font-size: 13.5px;
@@ -162,24 +165,29 @@ h2 {
   letter-spacing: 0.02em;
 }
 
-/* painting integrated under the text, smaller + framed */
-.art {
+/* Painting integrated: no separate art background box */
+.art{
   margin: 0;
-  padding: 16px 16px 14px;
-  background: rgba(255,255,255,0.06); /* gentle tonal shift */
+  padding: 0;
 }
 
-.art-img {
+/* Use a top rule to “attach” the image to the panel */
+.art-img{
   display: block;
   width: 100%;
-  max-height: 420px;       /* makes the painting feel “smaller” */
+  max-height: 420px;
+  height: auto;
+
   object-fit: cover;
   object-position: center 62%;
-  border: 1px solid rgba(255,255,255,0.14);
+
+  border-top: 1px solid rgba(255,255,255,0.16);
 }
 
-.art-cap {
-  margin-top: 10px;
+/* Caption sits inside the same panel, not in a new box */
+.art-cap{
+  margin: 0;
+  padding: 10px 14px 14px;
   font-family: var(--sans);
   font-size: 11.5px;
   color: rgba(255,255,255,0.78);
@@ -187,17 +195,24 @@ h2 {
   text-transform: uppercase;
 }
 
-/* links */
-a { color: inherit; text-decoration-color: rgba(255,255,255,0.55); text-underline-offset: 3px; }
-a:hover { text-decoration-color: rgba(255,255,255,0.92); }
+/* Links */
+a{
+  color: inherit;
+  text-decoration-color: rgba(255,255,255,0.55);
+  text-underline-offset: 3px;
+}
+a:hover{
+  text-decoration-color: rgba(255,255,255,0.92);
+}
 
-/* footer */
-.footer {
+/* Footer */
+.footer{
   margin-top: 22px;
   padding-top: 14px;
   border-top: 1px solid rgba(255,255,255,0.18);
 }
-.foot {
+
+.foot{
   margin: 0;
   font-family: var(--sans);
   font-size: 12px;
@@ -205,9 +220,9 @@ a:hover { text-decoration-color: rgba(255,255,255,0.92); }
   color: rgba(255,255,255,0.78);
 }
 
-/* responsive */
-@media (max-width: 720px) {
-  .panel-inner { padding: 22px 18px 18px; }
-  .title { font-size: 42px; }
-  .art-img { max-height: 320px; }
+/* Responsive */
+@media (max-width: 720px){
+  .panel-inner{ padding: 22px 18px 18px; }
+  .title{ font-size: 42px; }
+  .art-img{ max-height: 320px; }
 }
