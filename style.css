@@ -1,0 +1,34 @@
+:root {
+  --text: #111;
+  --muted: #555;
+  --bg: #fff;
+  --rule: #e9e9e9;
+  --max: 820px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); }
+body { font: 16px/1.6 ui-serif, Georgia, "Times New Roman", Times, serif; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 22px; }
+
+.nav {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; border-bottom: 1px solid var(--rule); padding-bottom: 14px;
+}
+.brand { font-weight: 600; text-decoration: none; color: var(--text); }
+.links a { margin-left: 14px; text-decoration: none; color: var(--muted); }
+.links a:hover { color: var(--text); }
+.links a.active { color: var(--text); text-decoration: underline; text-underline-offset: 4px; }
+
+h1 { font-size: 40px; line-height: 1.15; margin: 18px 0 10px; font-weight: 600; }
+h2 { font-size: 18px; margin: 0 0 10px; font-weight: 600; }
+
+.lede { font-size: 18px; color: var(--muted); margin: 0 0 24px; }
+.section { padding: 18px 0; border-top: 1px solid var(--rule); }
+.list { padding-left: 18px; margin: 0; }
+.list li { margin: 10px 0; }
+
+.small { font-size: 14px; color: var(--muted); }
+.footer { border-top: 1px solid var(--rule); margin-top: 30px; padding-top: 14px; }
+a { color: inherit; }
