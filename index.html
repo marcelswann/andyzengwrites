@@ -1,169 +1,66 @@
-:root {
-  /* Page background = “old top bar color” */
-  --bg: #c3b7a5;
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Andy Zeng</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
 
-  /* white type */
-  --text: rgba(255,255,255,0.94);
-  --muted: rgba(255,255,255,0.78);
-  --rule: rgba(255,255,255,0.22);
+<body class="home">
+  <header class="wrap">
+    <nav class="nav">
+      <a class="brand" href="/">Andy Zeng</a>
+      <div class="links">
+        <a class="active" href="/">About</a>
+        <a href="/publications.html">Publications</a>
+        <a href="/influences.html">Influences</a>
+        <a href="mailto:yz5135@columbia.edu">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-  /* panel tone (darker beige from your shades) */
-  --panel: rgba(54,49,42,0.30);   /* #36312a-ish tint */
-  --panel-border: rgba(255,255,255,0.18);
+  <main class="wrap">
+    <section class="panel">
+      <div class="panel-inner">
+        <h1 class="title">Andy Qifeng Zeng</h1>
 
-  --max: 980px;
+        <p class="lede">
+          Andy is a writer from Beijing living in New York and a first-year MFA student in Fiction at Columbia University.
+          His favorite writer is Marcel Proust, and his favorite book is <em>Humboldt’s Gift</em>.
+        </p>
 
-  --serif: ui-serif, Garamond, "EB Garamond", Georgia, serif;
-  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
-}
+        <section class="section">
+          <h2>Social Media</h2>
+          <p class="meta">
+            <a href="https://www.instagram.com/imandyzeng/" target="_blank" rel="noopener noreferrer">Instagram — @imandyzeng</a><br />
+            <a href="https://www.xiaohongshu.com/user/profile/5b538ea2e8ac2b1cff1139bc" target="_blank" rel="noopener noreferrer">RedNote — 曾小迪</a>
+          </p>
+        </section>
 
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); }
+        <section class="section">
+          <h2>Email</h2>
+          <p class="meta">
+            <a href="mailto:yz5135@columbia.edu">yz5135@columbia.edu</a>
+          </p>
+        </section>
+      </div>
 
-body{
-  font: 16.5px/1.75 var(--serif);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
+      <figure class="art">
+        <img class="art-img" src="/couture-romans.jpg" alt="Thomas Couture, The Romans of the Decadence" />
+        <figcaption class="art-cap">
+          Thomas Couture, <em>The Romans of the Decadence</em>.
+        </figcaption>
+      </figure>
+    </section>
+  </main>
 
-.wrap { max-width: var(--max); margin: 0 auto; padding: 18px 22px; }
+  <footer class="wrap footer">
+    <p class="foot">© <span id="y"></span> Andy Zeng</p>
+  </footer>
 
-/* NAV (no colored bar, sits on page bg) */
-.nav {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 10px 0 14px;
-  border-bottom: 1px solid rgba(255,255,255,0.18);
-}
-
-.brand {
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-}
-
-.links a {
-  margin-left: 14px;
-  text-decoration: none;
-  color: var(--muted);
-  font-family: var(--sans);
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.links a:hover { color: var(--text); }
-.links a.active {
-  color: var(--text);
-  text-decoration: underline;
-  text-decoration-color: rgba(255,255,255,0.65);
-  text-underline-offset: 4px;
-}
-
-/* Integrated panel: text + painting in one composition */
-.panel {
-  margin-top: 26px;
-  border: 1px solid var(--panel-border);
-  background: var(--panel);
-}
-
-/* top (text) */
-.panel-inner {
-  padding: 26px 26px 22px;
-  border-bottom: 1px solid rgba(255,255,255,0.16);
-}
-
-/* title: not bold */
-.title {
-  margin: 0 0 12px;
-  font-size: 48px;
-  line-height: 1.06;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-}
-
-.lede {
-  margin: 0 0 18px;
-  color: var(--muted);
-  font-size: 18.5px;
-  max-width: 62ch;
-}
-
-/* stacked hierarchy sections */
-.section {
-  margin-top: 16px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255,255,255,0.16);
-}
-
-h2 {
-  margin: 0 0 10px;
-  font-family: var(--sans);
-  font-size: 12px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.82);
-  font-weight: 650;
-}
-
-.meta {
-  margin: 0;
-  font-family: var(--sans);
-  font-size: 13.5px;
-  color: rgba(255,255,255,0.86);
-  letter-spacing: 0.02em;
-}
-
-/* painting integrated under the text, smaller + framed */
-.art {
-  margin: 0;
-  padding: 16px 16px 14px;
-  background: rgba(255,255,255,0.06); /* gentle tonal shift */
-}
-
-.art-img {
-  display: block;
-  width: 100%;
-  max-height: 420px;       /* makes the painting feel “smaller” */
-  object-fit: cover;
-  object-position: center 62%;
-  border: 1px solid rgba(255,255,255,0.14);
-}
-
-.art-cap {
-  margin-top: 10px;
-  font-family: var(--sans);
-  font-size: 11.5px;
-  color: rgba(255,255,255,0.78);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-/* links */
-a { color: inherit; text-decoration-color: rgba(255,255,255,0.55); text-underline-offset: 3px; }
-a:hover { text-decoration-color: rgba(255,255,255,0.92); }
-
-/* footer */
-.footer {
-  margin-top: 22px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255,255,255,0.18);
-}
-.foot {
-  margin: 0;
-  font-family: var(--sans);
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  color: rgba(255,255,255,0.78);
-}
-
-/* responsive */
-@media (max-width: 720px) {
-  .panel-inner { padding: 22px 18px 18px; }
-  .title { font-size: 42px; }
-  .art-img { max-height: 320px; }
-}
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
