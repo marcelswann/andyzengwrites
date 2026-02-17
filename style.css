@@ -10,9 +10,9 @@
   --rule: rgba(255,255,255,0.22);
 
   /* Panel */
-  --panel: rgba(54,49,42,0.20); /* slightly lighter than 0.24 */
-  --panel-border: rgba(255,255,255,0.2);
-
+  --panel: rgba(255,255,255,0.10);       /* unified surface */
+  --panel-border: rgba(255,255,255,0.18);
+  
   /* Layout */
   --max: 980px;
 
