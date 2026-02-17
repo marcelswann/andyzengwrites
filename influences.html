@@ -20,87 +20,157 @@
   </header>
 
   <main class="wrap">
-    <h1>Influences</h1>
-    <p class="lede">A running list of lines I return to.</p>
+    <div class="panel">
+      <div class="panel-inner">
+        <h1 class="title">Influences</h1>
+        <p class="lede">A running list of lines I return to.</p>
 
-    <section class="section">
-      <div class="influences">
-        <!-- Alphabetical by acronym tag (as provided) -->
+        <!-- Small control row (purely visual; no JS) -->
+        <div class="inf-bar" aria-hidden="true">
+          <span class="inf-bar__label">INDEX</span>
+          <span class="inf-bar__dots">• • •</span>
+          <span class="inf-bar__label">ALPHABETICAL</span>
+        </div>
 
-        <figure class="inf">
-          <figcaption class="inf-tag">AA</figcaption>
-          <blockquote class="inf-quote">“Lord, make me chaste, but not yet.”</blockquote>
-        </figure>
+        <section class="influences" aria-label="Influences">
+          <!-- AA -->
+          <article class="inf" id="aa">
+            <div class="inf-head">
+              <span class="inf-tag">AA</span>
+              <span class="inf-rule" aria-hidden="true"></span>
+              <span class="inf-meta">Aphorism</span>
+            </div>
+            <blockquote class="inf-quote">“Lord, make me chaste, but not yet.”</blockquote>
+          </article>
 
-        <figure class="inf">
-          <figcaption class="inf-tag">AE</figcaption>
-          <blockquote class="inf-quote">“No worthy problem is ever solved in the plane of its original conception.”</blockquote>
-        </figure>
+          <!-- AE -->
+          <article class="inf" id="ae">
+            <div class="inf-head">
+              <span class="inf-tag">AE</span>
+              <span class="inf-rule" aria-hidden="true"></span>
+              <span class="inf-meta">Maxim</span>
+            </div>
+            <blockquote class="inf-quote">“No worthy problem is ever solved in the plane of its original conception.”</blockquote>
+          </article>
 
-        <figure class="inf">
-          <figcaption class="inf-tag">Aristotle</figcaption>
-          <blockquote class="inf-quote">“The activity of God, which surpasses all others in blessedness, must be contemplation.”</blockquote>
-        </figure>
+          <!-- Aristotle -->
+          <article class="inf" id="aristotle">
+            <div class="inf-head">
+              <span class="inf-tag">Aristotle</span>
+              <span class="inf-rule" aria-hidden="true"></span>
+              <span class="inf-meta">Philosophy</span>
+            </div>
+            <blockquote class="inf-quote">“The activity of God, which surpasses all others in blessedness, must be contemplation.”</blockquote>
+          </article>
 
-        <figure class="inf">
-          <figcaption class="inf-tag">Bashō</figcaption>
-          <blockquote class="inf-quote">“In Kyoto, hearing the cuckoo, I long for Kyoto.”</blockquote>
-        </figure>
+          <!-- Bashō -->
+          <article class="inf" id="basho">
+            <div class="inf-head">
+              <span class="inf-tag">Bashō</span>
+              <span class="inf-rule" aria-hidden="true"></span>
+              <span class="inf-meta">Haiku (trans.)</span>
+            </div>
+            <blockquote class="inf-quote">“In Kyoto, hearing the cuckoo, I long for Kyoto.”</blockquote>
+          </article>
 
-        <figure class="inf">
-          <figcaption class="inf-tag">CM</figcaption>
-          <blockquote class="inf-quote">“There is no such joy in the tavern as upon the road thereto.”</blockquote>
-        </figure>
+          <!-- CM -->
+          <article class="inf" id="cm">
+            <div class="inf-head">
+              <span class="inf-tag">CM</span>
+              <span class="inf-rule" aria-hidden="true"></span>
+              <span class="inf-meta">Proverb</span>
+            </div>
+            <blockquote class="inf-quote">“There is no such joy in the tavern as upon the road thereto.”</blockquote>
+          </article>
 
-        <figure class="inf">
-          <figcaption class="inf-tag">DG</figcaption>
-          <blockquote class="inf-quote">
-            “Words are concepts, but concepts are lines—number systems attached to a particular dimension of the multiplicities
-            (strata, molecular chains, lines of flight or rupture, circles of convergence, etc.).”
-          </blockquote>
-        </figure>
+          <!-- DG -->
+          <article class="inf" id="dg">
+            <div class="inf-head">
+              <span class="inf-tag">DG</span>
+              <span class="inf-rule" aria-hidden="true"></span>
+              <span class="inf-meta">Theory</span>
+            </div>
+            <blockquote class="inf-quote">
+              “Words are concepts, but concepts are lines—number systems attached to a particular dimension of the multiplicities
+              (strata, molecular chains, lines of flight or rupture, circles of convergence, etc.).”
+            </blockquote>
+          </article>
 
-        <figure class="inf">
-          <figcaption class="inf-tag">FN</figcaption>
-          <blockquote class="inf-quote">
-            “On ne peut penser et écrire qu’assis (G. Flaubert). Here I have got you, you nihilist! A sedentary life is the real sin against the Holy Spirit.
-            Only those thoughts that come by walking have any value.”
-          </blockquote>
-        </figure>
+          <!-- FN -->
+          <article class="inf" id="fn">
+            <div class="inf-head">
+              <span class="inf-tag">FN</span>
+              <span class="inf-rule" aria-hidden="true"></span>
+              <span class="inf-meta">Polemic</span>
+            </div>
+            <blockquote class="inf-quote">
+              “On ne peut penser et écrire qu’assis (G. Flaubert). Here I have got you, you nihilist! A sedentary life is the real sin against the Holy Spirit.
+              Only those thoughts that come by walking have any value.”
+            </blockquote>
+          </article>
 
-        <figure class="inf">
-          <figcaption class="inf-tag">GC</figcaption>
-          <blockquote class="inf-quote">“Soyons vrais, même si nous sommes laids.”</blockquote>
-        </figure>
+          <!-- GC -->
+          <article class="inf" id="gc">
+            <div class="inf-head">
+              <span class="inf-tag">GC</span>
+              <span class="inf-rule" aria-hidden="true"></span>
+              <span class="inf-meta">Line</span>
+            </div>
+            <blockquote class="inf-quote">“Soyons vrais, même si nous sommes laids.”</blockquote>
+          </article>
 
-        <figure class="inf">
-          <figcaption class="inf-tag">PV</figcaption>
-          <blockquote class="inf-quote">“Trouve avant de chercher.”</blockquote>
-        </figure>
+          <!-- PV (1) -->
+          <article class="inf" id="pv1">
+            <div class="inf-head">
+              <span class="inf-tag">PV</span>
+              <span class="inf-rule" aria-hidden="true"></span>
+              <span class="inf-meta">Note</span>
+            </div>
+            <blockquote class="inf-quote">“Trouve avant de chercher.”</blockquote>
+          </article>
 
-        <figure class="inf">
-          <figcaption class="inf-tag">PV</figcaption>
-          <blockquote class="inf-quote">“Regarder, c’est-à-dire oublier le nom des choses que l’on voit.”</blockquote>
-        </figure>
+          <!-- PV (2) -->
+          <article class="inf" id="pv2">
+            <div class="inf-head">
+              <span class="inf-tag">PV</span>
+              <span class="inf-rule" aria-hidden="true"></span>
+              <span class="inf-meta">Note</span>
+            </div>
+            <blockquote class="inf-quote">“Regarder, c’est-à-dire oublier le nom des choses que l’on voit.”</blockquote>
+          </article>
 
-        <figure class="inf">
-          <figcaption class="inf-tag">Virgil</figcaption>
-          <blockquote class="inf-quote">“Forsan et haec olim meminisse iuvabit.”</blockquote>
-        </figure>
+          <!-- Virgil -->
+          <article class="inf" id="virgil">
+            <div class="inf-head">
+              <span class="inf-tag">Virgil</span>
+              <span class="inf-rule" aria-hidden="true"></span>
+              <span class="inf-meta">Latin</span>
+            </div>
+            <blockquote class="inf-quote">“Forsan et haec olim meminisse iuvabit.”</blockquote>
+          </article>
 
-        <figure class="inf">
-          <figcaption class="inf-tag">WW</figcaption>
-          <blockquote class="inf-quote">
-            “Now I am terrified at the Earth—it is that calm and patient; it grows such sweet things out of such corruptions.”
-          </blockquote>
-        </figure>
-
+          <!-- WW -->
+          <article class="inf" id="ww">
+            <div class="inf-head">
+              <span class="inf-tag">WW</span>
+              <span class="inf-rule" aria-hidden="true"></span>
+              <span class="inf-meta">Poetry</span>
+            </div>
+            <blockquote class="inf-quote">
+              “Now I am terrified at the Earth—it is that calm and patient; it grows such sweet things out of such corruptions.”
+            </blockquote>
+          </article>
+        </section>
       </div>
-    </section>
+    </div>
   </main>
 
   <footer class="wrap footer">
-    <p class="small"><a href="/">Home</a></p>
+    <p class="foot">© <span id="y"></span> Andy Zeng</p>
   </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
