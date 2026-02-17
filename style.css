@@ -1,29 +1,26 @@
 :root {
-  /* Beige system (your palette) */
-  --b0: #b4a68f;
-  --b1: #a29580;
-  --b2: #908472;
-  --b3: #7d7464;
+  /* Page background = “old top bar color” */
+  --bg: #c3b7a5;
 
-  --t0: #f0ede8; /* background */
-  --t1: #f7f6f3; /* card */
-  --t2: #e8e4dd; /* subtle fills */
-  --t3: #d9d2c7; /* topbar */
-  --t4: #cac0b0; /* borders */
-
-  /* White type */
-  --ink: rgba(255,255,255,0.96);
+  /* white type */
+  --text: rgba(255,255,255,0.94);
   --muted: rgba(255,255,255,0.78);
+  --rule: rgba(255,255,255,0.22);
 
-  --max: 1040px;
+  /* panel tone (darker beige from your shades) */
+  --panel: rgba(54,49,42,0.30);   /* #36312a-ish tint */
+  --panel-border: rgba(255,255,255,0.18);
+
+  --max: 980px;
+
   --serif: ui-serif, Garamond, "EB Garamond", Georgia, serif;
   --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
 }
 
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; background: var(--t0); color: var(--ink); }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); }
 
-body {
+body{
   font: 16.5px/1.75 var(--serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -32,24 +29,19 @@ body {
 
 .wrap { max-width: var(--max); margin: 0 auto; padding: 18px 22px; }
 
-/* Topbar darker for contrast */
-.topbar {
-  background: #c3b7a5;                 /* slightly darker tint */
-  border-bottom: 1px solid rgba(255,255,255,0.20);
-}
-
-/* Nav */
+/* NAV (no colored bar, sits on page bg) */
 .nav {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 16px;
-  padding: 10px 0;
+  padding: 10px 0 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.18);
 }
 
 .brand {
   text-decoration: none;
-  color: var(--ink);
+  color: var(--text);
   font-weight: 500;
   letter-spacing: 0.02em;
 }
@@ -64,31 +56,28 @@ body {
   text-transform: uppercase;
 }
 
-.links a:hover { color: var(--ink); }
+.links a:hover { color: var(--text); }
 .links a.active {
-  color: var(--ink);
+  color: var(--text);
   text-decoration: underline;
-  text-decoration-color: rgba(255,255,255,0.55);
+  text-decoration-color: rgba(255,255,255,0.65);
   text-underline-offset: 4px;
 }
 
-/* Layout */
-.layout {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 26px;
-  padding-top: 26px;
-  padding-bottom: 18px;
+/* Integrated panel: text + painting in one composition */
+.panel {
+  margin-top: 26px;
+  border: 1px solid var(--panel-border);
+  background: var(--panel);
 }
 
-/* Card: use darker beige so white text is readable */
-.card {
-  background: #908472;                 /* from your shades */
-  border: 1px solid rgba(255,255,255,0.20);
+/* top (text) */
+.panel-inner {
   padding: 26px 26px 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.16);
 }
 
-/* Typography */
+/* title: not bold */
 .title {
   margin: 0 0 12px;
   font-size: 48px;
@@ -104,10 +93,11 @@ body {
   max-width: 62ch;
 }
 
+/* stacked hierarchy sections */
 .section {
   margin-top: 16px;
   padding-top: 14px;
-  border-top: 1px solid rgba(255,255,255,0.18);
+  border-top: 1px solid rgba(255,255,255,0.16);
 }
 
 h2 {
@@ -128,46 +118,52 @@ h2 {
   letter-spacing: 0.02em;
 }
 
-/* Links */
-a { color: inherit; text-decoration-color: rgba(255,255,255,0.50); text-underline-offset: 3px; }
-a:hover { text-decoration-color: rgba(255,255,255,0.90); }
-
-/* Art: keep light frame but make caption readable */
-.art-frame {
+/* painting integrated under the text, smaller + framed */
+.art {
   margin: 0;
-  background: #e1dbd2;
-  border: 1px solid rgba(255,255,255,0.18);
-  padding: 14px;
+  padding: 16px 16px 14px;
+  background: rgba(255,255,255,0.06); /* gentle tonal shift */
 }
 
 .art-img {
-  width: 100%;
-  height: auto;
   display: block;
-  border: 1px solid rgba(0,0,0,0.10);
+  width: 100%;
+  max-height: 420px;       /* makes the painting feel “smaller” */
+  object-fit: cover;
+  object-position: center 62%;
+  border: 1px solid rgba(255,255,255,0.14);
 }
 
 .art-cap {
   margin-top: 10px;
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 11.5px;
   color: rgba(255,255,255,0.78);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
-/* Footer */
-.footer { padding-top: 10px; padding-bottom: 22px; }
+/* links */
+a { color: inherit; text-decoration-color: rgba(255,255,255,0.55); text-underline-offset: 3px; }
+a:hover { text-decoration-color: rgba(255,255,255,0.92); }
+
+/* footer */
+.footer {
+  margin-top: 22px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.18);
+}
 .foot {
   margin: 0;
   font-family: var(--sans);
   font-size: 12px;
   letter-spacing: 0.12em;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.78);
 }
 
-/* Responsive */
-@media (max-width: 860px) {
-  .layout { grid-template-columns: 1fr; }
+/* responsive */
+@media (max-width: 720px) {
+  .panel-inner { padding: 22px 18px 18px; }
   .title { font-size: 42px; }
+  .art-img { max-height: 320px; }
 }
