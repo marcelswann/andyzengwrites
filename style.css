@@ -1,13 +1,11 @@
 :root {
-  /* background */
-  --bg: #b4a68f;      /* your chosen beige */
-  --text: #ffffff;    /* white text */
-  --muted: rgba(255,255,255,0.78);
+  /* base fallback (when image fails) */
+  --bg: #b4a68f;
+  --text: #ffffff;
+  --muted: rgba(255,255,255,0.82);
+  --rule: rgba(255, 255, 255, 0.28);
 
-  /* dividers */
-  --rule: rgba(255, 255, 255, 0.32);
-
-  --max: 820px;
+  --max: 920px;
 
   --serif: ui-serif, Garamond, "EB Garamond", Georgia, serif;
   --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
@@ -17,16 +15,23 @@
 html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); }
 
 body {
-  font: 16.5px/1.7 var(--serif);
+  font: 16.5px/1.75 var(--serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-/* no overlay, no drop shadow */
-body::before { content: none !important; }
-body, .brand, .links a, h1, h2, .lede, .small, a { text-shadow: none !important; }
+/* HERO BACKGROUND IMAGE */
+body.has-hero {
+  background:
+    linear-gradient(to bottom, rgba(180,166,143,0.42), rgba(180,166,143,0.58)),
+    url("/couture-romans.jpg");
+  background-size: cover;
+  background-position: center 45%;
+  background-attachment: fixed;
+}
 
+/* layout */
 .wrap { max-width: var(--max); margin: 0 auto; padding: 26px 22px; }
 
 /* nav */
@@ -51,65 +56,101 @@ body, .brand, .links a, h1, h2, .lede, .small, a { text-shadow: none !important;
   text-decoration: none;
   color: var(--muted);
   font-family: var(--sans);
-  font-size: 13.5px;
-  letter-spacing: 0.2px;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 .links a:hover { color: var(--text); }
 .links a.active {
   color: var(--text);
   text-decoration: underline;
-  text-decoration-color: rgba(255,255,255,0.8);
+  text-decoration-color: rgba(255,255,255,0.78);
   text-underline-offset: 4px;
 }
 
-/* headings */
+/* content veil: improves readability WITHOUT tinting the whole page */
+.veil {
+  padding: 34px 0 10px;
+  max-width: 70ch;
+}
+
+.has-hero .veil {
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.28),
+    rgba(0,0,0,0.18)
+  );
+  padding: 34px 28px;
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+/* typography */
 h1 {
-  font-size: 42px;
-  line-height: 1.12;
-  margin: 22px 0 10px;
-  font-weight: 650;
-  letter-spacing: -0.3px;
-}
-
-h2 {
-  font-size: 14px;
+  font-size: 56px;
+  line-height: 1.02;
   margin: 0 0 12px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  font-family: var(--sans);
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
-/* body copy */
 .lede {
   font-size: 19px;
   color: var(--muted);
-  margin: 0 0 26px;
+  margin: 0 0 22px;
   max-width: 62ch;
 }
 
-.section {
-  padding: 20px 0;
-  border-top: 1px solid var(--rule);
+/* two-column section grouping (still feels connected) */
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 28px;
 }
 
-.list { padding-left: 18px; margin: 0; }
-.list li { margin: 10px 0; }
+@media (max-width: 700px) {
+  .two { grid-template-columns: 1fr; }
+  h1 { font-size: 46px; }
+  body.has-hero { background-attachment: scroll; }
+}
+
+/* section headers */
+h2 {
+  font-size: 12px;
+  margin: 0 0 10px;
+  font-weight: 650;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.82);
+  font-family: var(--sans);
+}
+
+/* tighter sections so it reads like one composition */
+.section {
+  padding: 16px 0 0;
+  border-top: 1px solid var(--rule);
+}
+.section--tight { padding-top: 14px; }
 
 /* links */
 a {
   color: inherit;
-  text-decoration-color: rgba(255,255,255,0.6);
+  text-decoration-color: rgba(255,255,255,0.55);
   text-underline-offset: 3px;
 }
-a:hover { text-decoration-color: rgba(255,255,255,0.95); }
+a:hover { text-decoration-color: rgba(255,255,255,0.92); }
+
+.small {
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.86);
+  font-family: var(--sans);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
 
 /* footer */
-.small { font-size: 13.5px; color: var(--muted); font-family: var(--sans); }
-.footer { border-top: 1px solid var(--rule); margin-top: 34px; padding-top: 14px; }
-
-/* homepage spacing */
-main.wrap { padding-top: 18px; }
-main.wrap .small { margin-top: 10px; }
+.footer {
+  border-top: 1px solid var(--rule);
+  margin-top: 28px;
+  padding-top: 14px;
+}
