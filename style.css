@@ -11,9 +11,9 @@
   --t3: #d9d2c7; /* topbar */
   --t4: #cac0b0; /* borders */
 
-  /* Type */
-  --ink: #24211c;
-  --muted: #5a5347;
+  /* White type */
+  --ink: rgba(255,255,255,0.96);
+  --muted: rgba(255,255,255,0.78);
 
   --max: 1040px;
   --serif: ui-serif, Garamond, "EB Garamond", Georgia, serif;
@@ -32,10 +32,10 @@ body {
 
 .wrap { max-width: var(--max); margin: 0 auto; padding: 18px 22px; }
 
-/* Topbar uses a darker beige to anchor the page */
+/* Topbar darker for contrast */
 .topbar {
-  background: var(--t3);
-  border-bottom: 1px solid var(--t4);
+  background: #c3b7a5;                 /* slightly darker tint */
+  border-bottom: 1px solid rgba(255,255,255,0.20);
 }
 
 /* Nav */
@@ -68,11 +68,11 @@ body {
 .links a.active {
   color: var(--ink);
   text-decoration: underline;
-  text-decoration-color: rgba(36,33,28,0.4);
+  text-decoration-color: rgba(255,255,255,0.55);
   text-underline-offset: 4px;
 }
 
-/* Layout: clean two-column, art smaller */
+/* Layout */
 .layout {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -81,10 +81,10 @@ body {
   padding-bottom: 18px;
 }
 
-/* Card: “paper” */
+/* Card: use darker beige so white text is readable */
 .card {
-  background: var(--t1);
-  border: 1px solid var(--t4);
+  background: #908472;                 /* from your shades */
+  border: 1px solid rgba(255,255,255,0.20);
   padding: 26px 26px 22px;
 }
 
@@ -93,7 +93,7 @@ body {
   margin: 0 0 12px;
   font-size: 48px;
   line-height: 1.06;
-  font-weight: 400; /* not bold */
+  font-weight: 400;
   letter-spacing: -0.01em;
 }
 
@@ -107,7 +107,7 @@ body {
 .section {
   margin-top: 16px;
   padding-top: 14px;
-  border-top: 1px solid var(--t4);
+  border-top: 1px solid rgba(255,255,255,0.18);
 }
 
 h2 {
@@ -116,7 +116,7 @@ h2 {
   font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--b3);
+  color: rgba(255,255,255,0.82);
   font-weight: 650;
 }
 
@@ -124,19 +124,19 @@ h2 {
   margin: 0;
   font-family: var(--sans);
   font-size: 13.5px;
-  color: var(--muted);
+  color: rgba(255,255,255,0.86);
   letter-spacing: 0.02em;
 }
 
 /* Links */
-a { color: inherit; text-decoration-color: rgba(90,83,71,0.45); text-underline-offset: 3px; }
-a:hover { text-decoration-color: rgba(36,33,28,0.75); }
+a { color: inherit; text-decoration-color: rgba(255,255,255,0.50); text-underline-offset: 3px; }
+a:hover { text-decoration-color: rgba(255,255,255,0.90); }
 
-/* Art: framed, smaller, and “gallery” */
+/* Art: keep light frame but make caption readable */
 .art-frame {
   margin: 0;
-  background: var(--t2);
-  border: 1px solid var(--t4);
+  background: #e1dbd2;
+  border: 1px solid rgba(255,255,255,0.18);
   padding: 14px;
 }
 
@@ -144,14 +144,14 @@ a:hover { text-decoration-color: rgba(36,33,28,0.75); }
   width: 100%;
   height: auto;
   display: block;
-  border: 1px solid rgba(36,33,28,0.08);
+  border: 1px solid rgba(0,0,0,0.10);
 }
 
 .art-cap {
   margin-top: 10px;
   font-family: var(--sans);
   font-size: 12px;
-  color: var(--b3);
+  color: rgba(255,255,255,0.78);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -163,7 +163,7 @@ a:hover { text-decoration-color: rgba(36,33,28,0.75); }
   font-family: var(--sans);
   font-size: 12px;
   letter-spacing: 0.12em;
-  color: var(--b3);
+  color: rgba(255,255,255,0.75);
 }
 
 /* Responsive */
