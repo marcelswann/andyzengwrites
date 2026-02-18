@@ -153,7 +153,7 @@ main.wrap{
 .panel-inner{
   max-width: var(--max);
   margin: 0 auto;
-  padding: 26px 26px 14px;
+  padding: 26px 26px 8px; /* tighter before the art */
 }
 
 .title{
@@ -178,26 +178,19 @@ main.wrap{
   border-top: 1px solid rgba(255,255,255,0.16);
 }
 
-/* Keep dividers between sections... */
-.section{
-  margin-top: 16px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255,255,255,0.16);
-}
-
-/* ✅ ...but remove the divider directly above the painting
-   (i.e., on the LAST section inside the panel-inner) */
+/* ✅ remove the “extra” divider under the LAST section (Email) */
 .panel-inner .section:last-of-type{
-  border-top: 1px solid rgba(255,255,255,0.16); /* keep the line above Email */
+  padding-bottom: 0;
 }
 
-/* Remove the line that sits under Email (before the art) */
-.panel-inner{
-  padding-bottom: 8px; /* optional: tighten before art */
-}
+/* remove any accidental rule before the art block */
 .panel-inner + .art{
-  /* ensures no accidental rule appears before art */
-  border-top: none;
+  border-top: none !important;
+}
+
+/* (Optional) add a little breathing room between Email and the art */
+.panel-inner .section:last-of-type{
+  margin-bottom: 10px;
 }
 
 h2{
@@ -241,7 +234,7 @@ h2{
   width: 100%;
   height: auto;
   max-width: 100%;
-  max-height: 280px; /* key: reduce dominance */
+  max-height: 280px; /* reduce dominance */
   object-fit: cover;
   object-position: center 62%;
   border: 1px solid rgba(255,255,255,0.22);
@@ -289,7 +282,7 @@ a:hover{
 /* Responsive */
 @media (max-width: 720px){
   :root { --frame: 22px; }
-  .panel-inner{ padding: 22px 18px 14px; }
+  .panel-inner{ padding: 22px 18px 8px; }
   .title{ font-size: 42px; }
 
   .art{ padding: 16px 18px 20px; }
@@ -479,80 +472,49 @@ a:hover{
   .pub-title{ font-size: 16.5px; }
 }
 
-/* --- Home hero: text + circular headshot --- */
+/* --- Home hero: larger circular headshot that stays proportional --- */
 .hero{
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 22px;
-  align-items: start;
+  grid-template-columns: clamp(170px, 18vw, 240px) 1fr;
+  gap: 28px;
+  align-items: center; /* centers the photo against taller lede */
 }
 
-/* Make the photo match the approximate height of the title+lede block */
 .hero-photo{
-  /* tweak if you want slightly bigger/smaller */
-  width: 210px;
-  height: 210px;
-  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .headshot{
-  width: 100%;
-  height: 100%;
+  width: clamp(170px, 18vw, 240px);
+  height: clamp(170px, 18vw, 240px);
   display: block;
   object-fit: cover;
   object-position: center 30%;
   border-radius: 999px;
 
-  /* round border + subtle “mat” feel */
-  border: 1px solid rgba(255,255,255,0.55);
-  outline: 10px solid rgba(255,255,255,0.10); /* soft outer ring */
-  outline-offset: 0;
+  border: 6px solid rgba(255,255,255,0.22);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.10) inset;
+  cursor: pointer;
+
+  /* if you want that slight left shift */
+  transform: translateX(-10px);
 }
 
-/* Mobile: stack and center the headshot */
 @media (max-width: 720px){
   .hero{
     grid-template-columns: 1fr;
-  }
-  .hero-photo{
-    width: 168px;
-    height: 168px;
-    margin-top: 10px;
+    gap: 16px;
+    justify-items: center;
+    text-align: left;
   }
   .headshot{
-    margin-left: 0;
+    transform: none; /* don't offset on mobile */
   }
 }
 
-.headshot { cursor: pointer; }
-
-/* Gothic divider under the name */
-.gothic-rule{
-  position: relative;
-  height: 18px;
-  margin: 14px 0 10px;
-  opacity: 0.95;
-}
-
-.gothic-rule::before{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  top:50%;
-  height:1px;
-  transform: translateY(-50%);
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(255,255,255,0.22) 12%,
-    rgba(255,255,255,0.38) 50%,
-    rgba(255,255,255,0.22) 88%,
-    transparent 100%
-  );
-}
-
-/* More floral + two smaller side ornaments */
+/* --- Gothic divider under the name (single definition) --- */
 .gothic-rule{
   position: relative;
   height: 22px;
@@ -578,7 +540,7 @@ a:hover{
   );
 }
 
-/* center floral rosette */
+/* center floral rosette + two small side ornaments */
 .gothic-rule::after {
   content: "";
   position: absolute;
@@ -590,35 +552,35 @@ a:hover{
   pointer-events: none;
 
   background:
-    /* ─── side crosses · left ─── */
+    /* side ornaments (left) */
     linear-gradient(rgba(255,255,255,0.50), rgba(255,255,255,0.50)) 15px 50% / 1px 7px no-repeat,
     linear-gradient(rgba(255,255,255,0.50), rgba(255,255,255,0.50)) 13px 50% / 5px 1px no-repeat,
     linear-gradient(rgba(255,255,255,0.30), rgba(255,255,255,0.30))  4px 50% / 1px 5px no-repeat,
     linear-gradient(rgba(255,255,255,0.30), rgba(255,255,255,0.30))  3px 50% / 3px 1px no-repeat,
 
-    /* ─── side crosses · right ─── */
+    /* side ornaments (right) */
     linear-gradient(rgba(255,255,255,0.50), rgba(255,255,255,0.50)) calc(100% - 15px) 50% / 1px 7px no-repeat,
     linear-gradient(rgba(255,255,255,0.50), rgba(255,255,255,0.50)) calc(100% - 13px) 50% / 5px 1px no-repeat,
     linear-gradient(rgba(255,255,255,0.30), rgba(255,255,255,0.30)) calc(100% -  4px) 50% / 1px 5px no-repeat,
     linear-gradient(rgba(255,255,255,0.30), rgba(255,255,255,0.30)) calc(100% -  3px) 50% / 3px 1px no-repeat,
 
-    /* ─── center · primary cross beams ─── */
+    /* center: cross beams */
     linear-gradient(to bottom, transparent, rgba(255,255,255,0.95) 20% 80%, transparent)
       center / 2.5px 100% no-repeat,
     linear-gradient(to right, transparent, rgba(255,255,255,0.95) 25% 75%, transparent)
       center / 22px 2.5px no-repeat,
 
-    /* ─── center · diagonal rays ─── */
+    /* center: diagonal petals */
     linear-gradient(135deg, transparent 15%, rgba(255,255,255,0.40) 44% 56%, transparent 85%)
       center / 15px 15px no-repeat,
     linear-gradient(45deg,  transparent 15%, rgba(255,255,255,0.40) 44% 56%, transparent 85%)
       center / 15px 15px no-repeat,
 
-    /* ─── center · outer halo ring ─── */
+    /* center: halo ring */
     radial-gradient(circle, transparent 7px, rgba(255,255,255,0.18) 7.8px 8.8px, transparent 9.5px)
       center / 22px 22px no-repeat,
 
-    /* ─── center · radiant core ─── */
+    /* center: radiant core */
     radial-gradient(circle, rgba(255,255,255,1) 0 2px, rgba(255,255,255,0.35) 4px, transparent 7px)
       center / 16px 16px no-repeat;
 }
