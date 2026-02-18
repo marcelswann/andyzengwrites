@@ -3,14 +3,14 @@
   --bg: #908472;
 
   /* White type */
-  --text: rgba(255,255,255,0.94);
-  --muted: rgba(255,255,255,0.78);
+  --text: rgba(255,255,255,0.98);
+  --muted: rgba(255,255,255,0.88);
 
   /* Lines */
-  --rule: rgba(255,255,255,0.22);
+  --rule: rgba(255,255,255,0.24);
 
   /* Panel */
-  --panel: rgba(255,255,255,0.10);
+  --panel: rgba(255,255,255,0.15);
   --panel-border: rgba(255,255,255,0.18);
 
   /* Layout */
