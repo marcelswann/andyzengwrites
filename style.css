@@ -526,49 +526,56 @@ a:hover{
 
 .headshot { cursor: pointer; }
 
-/* Gothic ornamental rule (no "random dots") */
+/* Gothic divider under the name */
 .gothic-rule{
   position: relative;
-  width: min(420px, 80%);
-  height: 20px;
-  margin: 10px 0 16px;
-  opacity: 0.9;
+  height: 18px;
+  margin: 14px 0 10px;
+  opacity: 0.95;
 }
 
-/* thin baseline */
 .gothic-rule::before{
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  height: 1px;
-  background: rgba(255,255,255,0.42);
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:50%;
+  height:1px;
   transform: translateY(-50%);
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255,255,255,0.22) 12%,
+    rgba(255,255,255,0.38) 50%,
+    rgba(255,255,255,0.22) 88%,
+    transparent 100%
+  );
 }
 
-/* ornament in the middle */
 .gothic-rule::after{
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 240px;
-  height: 20px;
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:54px;
+  height:18px;
   transform: translate(-50%, -50%);
+  pointer-events:none;
+
+  /* ornate “rosette” center + tiny chevrons */
   background:
-    /* center diamond */
-    linear-gradient(45deg, transparent 46%, rgba(255,255,255,0.88) 47% 53%, transparent 54%) center/18px 18px no-repeat,
-    linear-gradient(-45deg, transparent 46%, rgba(255,255,255,0.88) 47% 53%, transparent 54%) center/18px 18px no-repeat,
+    /* little side chevrons */
+    linear-gradient(135deg, transparent 48%, rgba(255,255,255,0.60) 49% 51%, transparent 52%) 6px 50%/10px 10px no-repeat,
+    linear-gradient(-135deg, transparent 48%, rgba(255,255,255,0.60) 49% 51%, transparent 52%) calc(100% - 6px) 50%/10px 10px no-repeat,
 
-    /* left curl */
-    radial-gradient(closest-side at 28% 50%, transparent 62%, rgba(255,255,255,0.75) 63% 66%, transparent 67%) left 45%/40px 18px no-repeat,
-    radial-gradient(closest-side at 36% 50%, transparent 60%, rgba(255,255,255,0.55) 61% 64%, transparent 65%) left 52%/34px 14px no-repeat,
+    /* rosette core */
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.95) 0 2px, transparent 3px) center/20px 20px no-repeat,
+    radial-gradient(circle at 50% 50%, transparent 0 6px, rgba(255,255,255,0.78) 7px 7.8px, transparent 8.6px) center/22px 22px no-repeat,
+    radial-gradient(circle at 50% 50%, transparent 0 10px, rgba(255,255,255,0.42) 10.8px 11.6px, transparent 12.4px) center/30px 30px no-repeat,
 
-    /* right curl */
-    radial-gradient(closest-side at 72% 50%, transparent 62%, rgba(255,255,255,0.75) 63% 66%, transparent 67%) right 45%/40px 18px no-repeat,
-    radial-gradient(closest-side at 64% 50%, transparent 60%, rgba(255,255,255,0.55) 61% 64%, transparent 65%) right 52%/34px 14px no-repeat,
-
-    /* short bars near the center */
-    linear-gradient(to right, transparent 0 32%, rgba(255,255,255,0.55) 32% 42%, transparent 42% 58%, rgba(255,255,255,0.55) 58% 68%, transparent 68% 100%) center/240px 1px no-repeat;
+    /* four “petals” */
+    radial-gradient(closest-side at 50% 25%, rgba(255,255,255,0.75) 0 55%, transparent 56%) center/14px 10px no-repeat,
+    radial-gradient(closest-side at 50% 75%, rgba(255,255,255,0.75) 0 55%, transparent 56%) center/14px 10px no-repeat,
+    radial-gradient(closest-side at 25% 50%, rgba(255,255,255,0.75) 0 55%, transparent 56%) center/10px 14px no-repeat,
+    radial-gradient(closest-side at 75% 50%, rgba(255,255,255,0.75) 0 55%, transparent 56%) center/10px 14px no-repeat;
 }
