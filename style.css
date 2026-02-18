@@ -523,3 +523,5 @@ a:hover{
     margin-left: 0;
   }
 }
+
+.headshot { cursor: pointer; }
