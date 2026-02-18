@@ -23,19 +23,28 @@
   <main class="wrap">
     <section class="panel">
       <div class="panel-inner">
-             <div class="hero">
-  <div class="hero-photo">
-    <img src="/me1.jpg" alt="Andy Zeng headshot" class="headshot" />
-  </div>
 
-  <div class="hero-text">
-    <h1 class="title">Andy Qifeng Zeng</h1>
-    <p class="lede">
-      Andy is a writer from Beijing living in New York and a first-year MFA student in Fiction at Columbia University.
-      His favorite writer is Marcel Proust, and his (current) favorite book is <em>Humboldt’s Gift</em>.
-    </p>
-  </div>
-</div>
+        <div class="hero">
+          <div class="hero-photo">
+            <img
+              id="profilePic"
+              src="/me1.jpg"
+              alt="Andy Zeng headshot"
+              class="headshot"
+              role="button"
+              tabindex="0"
+              title="Click to reveal Mei"
+            />
+          </div>
+
+          <div class="hero-text">
+            <h1 class="title">Andy Qifeng Zeng</h1>
+            <p class="lede">
+              Andy is a writer from Beijing living in New York and a first-year MFA student in Fiction at Columbia University.
+              His favorite writer is Marcel Proust, and his (current) favorite book is <em>Humboldt’s Gift</em>.
+            </p>
+          </div>
+        </div>
 
         <section class="section">
           <h2>Social Media</h2>
@@ -51,16 +60,18 @@
             <a href="mailto:yz5135@columbia.edu">yz5135@columbia.edu</a>
           </p>
         </section>
+
       </div>
 
       <figure class="art">
-  <div class="art-frame">
-    <img class="art-img" src="/couture-romans.jpg" alt="Thomas Couture, The Romans in their Decadence" />
-  </div>
-  <figcaption class="art-cap">
-    Thomas Couture, <em>The Romans in their Decadence</em>.
-  </figcaption>
-</figure>
+        <div class="art-frame">
+          <img class="art-img" src="/couture-romans.jpg" alt="Thomas Couture, The Romans in their Decadence" />
+        </div>
+        <figcaption class="art-cap">
+          Thomas Couture, <em>The Romans in their Decadence</em>.
+        </figcaption>
+      </figure>
+    </section>
   </main>
 
   <footer class="wrap footer">
@@ -69,6 +80,23 @@
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    const pics = ["/me1.jpg", "/mei1.JPG", "/mei2.JPG"];
+    let i = 0;
+
+    const img = document.getElementById("profilePic");
+    function nextPic() {
+      i = (i + 1) % pics.length;
+      img.src = pics[i];
+    }
+
+    img.addEventListener("click", nextPic);
+    img.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        nextPic();
+      }
+    });
   </script>
 </body>
 </html>
