@@ -585,3 +585,30 @@ a:hover{
     radial-gradient(circle, rgba(255,255,255,1) 0 2px, rgba(255,255,255,0.35) 4px, transparent 7px)
       center / 16px 16px no-repeat;
 }
+
+/* Quote block above the painting */
+.quote{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 10px 26px 6px;
+}
+
+.quote-text{
+  margin: 0;
+  padding: 14px 0 0;
+  border-top: 1px solid rgba(255,255,255,0.16);
+  color: rgba(255,255,255,0.90);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.quote-text p{ margin: 0; }
+
+.quote-attrib{
+  margin: 10px 0 0;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.72);
+}
