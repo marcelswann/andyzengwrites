@@ -586,35 +586,53 @@ a:hover{
       center / 16px 16px no-repeat;
 }
 
-/* Quote block above the painting — slick version */
+/* Centered epigraph with oversized quotes */
 .quote{
   max-width: var(--max);
   margin: 0 auto;
   padding: 10px 26px 0;
+  text-align: center;
 }
 
 .quote-text{
+  position: relative;
   margin: 0;
-  padding: 14px 0 0;
+  padding: 22px 26px 18px;
+
   border-top: 1px solid rgba(255,255,255,0.14);
 
-  font-size: 16.5px;
-  line-height: 1.85;
-  color: rgba(255,255,255,0.90);
+  font-size: 16.75px;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.92);
 
-  /* make it feel “epigraph” */
   letter-spacing: 0.01em;
   text-wrap: pretty;
 }
 
-.quote-text p{
-  margin: 0 0 10px;
+/* Big decorative quotes */
+.quote-text::before,
+.quote-text::after{
+  position: absolute;
+  font-family: var(--serif);
+  font-size: 64px;
+  line-height: 1;
+  color: rgba(255,255,255,0.28);
+  pointer-events: none;
 }
 
-.quote-text p:last-child{
-  margin-bottom: 0;
+.quote-text::before{
+  content: "“";
+  left: 6px;
+  top: 6px;
 }
 
+.quote-text::after{
+  content: "”";
+  right: 6px;
+  bottom: -6px;
+}
+
+/* Attribution */
 .quote-attrib{
   margin: 10px 0 0;
   font-family: var(--sans);
@@ -622,4 +640,12 @@ a:hover{
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.72);
+  text-align: center;
+}
+
+/* Mobile tuning */
+@media (max-width: 720px){
+  .quote{ padding-left: 18px; padding-right: 18px; }
+  .quote-text{ padding: 20px 18px 16px; font-size: 16px; }
+  .quote-text::before, .quote-text::after{ font-size: 54px; }
 }
