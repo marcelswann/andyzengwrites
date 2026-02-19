@@ -651,3 +651,16 @@ a:hover{
   .quote-text::before, .quote-text::after{ font-size: 54px; }
 }
 
+.art-break{
+  max-width: var(--max);
+  margin: 16px auto;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255,255,255,0.10) 10%,
+    rgba(255,255,255,0.26) 50%,
+    rgba(255,255,255,0.10) 90%,
+    transparent 100%
+  );
+}
