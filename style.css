@@ -586,29 +586,40 @@ a:hover{
       center / 16px 16px no-repeat;
 }
 
-/* Quote block above the painting */
+/* Quote block above the painting — slick version */
 .quote{
   max-width: var(--max);
   margin: 0 auto;
-  padding: 10px 26px 6px;
+  padding: 10px 26px 0;
 }
 
 .quote-text{
   margin: 0;
   padding: 14px 0 0;
-  border-top: 1px solid rgba(255,255,255,0.16);
+  border-top: 1px solid rgba(255,255,255,0.14);
+
+  font-size: 16.5px;
+  line-height: 1.85;
   color: rgba(255,255,255,0.90);
-  font-size: 17px;
-  line-height: 1.7;
+
+  /* make it feel “epigraph” */
+  letter-spacing: 0.01em;
+  text-wrap: pretty;
 }
 
-.quote-text p{ margin: 0; }
+.quote-text p{
+  margin: 0 0 10px;
+}
+
+.quote-text p:last-child{
+  margin-bottom: 0;
+}
 
 .quote-attrib{
   margin: 10px 0 0;
   font-family: var(--sans);
   font-size: 11px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.72);
 }
