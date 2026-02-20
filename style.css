@@ -1,28 +1,28 @@
 :root {
-  /* Page background (inside the mat) */
-  --bg: #9e8e77;
+  /* Page background (Darker, richer background for high contrast) */
+  --bg: #1c1f26;
 
   /* White type */
-  --text: rgba(255,255,255,0.98);
-  --muted: rgba(255,255,255,0.88);
+  --text: rgba(255, 255, 255, 0.95);
+  --muted: rgba(255, 255, 255, 0.75);
 
   /* Lines */
-  --rule: rgba(255,255,255,0.25);
+  --rule: rgba(255, 255, 255, 0.15);
 
-  /* Panel */
-  --panel: rgba(255,255,255,0.25);
-  --panel-border: rgba(255,255,255,0.18);
+  /* Translucent glass panel */
+  --panel: rgba(255, 255, 255, 0.04);
+  --panel-border: rgba(255, 255, 255, 0.1);
 
   /* Layout */
   --max: 980px;
 
-  /* Type */
-  --serif: ui-serif, Garamond, "EB Garamond", Georgia, serif;
-  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+  /* Premium Typography */
+  --serif: 'Playfair Display', ui-serif, Garamond, "EB Garamond", Georgia, serif;
+  --sans: 'Inter', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
   /* Frame (white mat) */
   --frame: 16px;
-  --frame-color: rgba(255,255,255,0.55);
+  --frame-color: rgba(255, 255, 255, 0.15);
 }
 
 * { box-sizing: border-box; }
@@ -37,7 +37,7 @@ html, body {
 body {
   min-height: 100svh;
   padding: var(--frame);
-  background: #ffffff;
+  background: #ffffff; /* The outer frame remains white */
 
   font: 16.5px/1.75 var(--serif);
   -webkit-font-smoothing: antialiased;
@@ -49,19 +49,19 @@ body {
   flex-direction: column;
 }
 
-/* Beige page background INSIDE the mat */
-body::before{
-  content:"";
+/* Dark page background INSIDE the mat with a subtle gradient */
+body::before {
+  content: "";
   position: fixed;
   inset: var(--frame);
-  background: var(--bg);
+  background: radial-gradient(circle at top right, #2a2d35, var(--bg));
   pointer-events: none;
   z-index: -1;
 }
 
 /* Optional inner hairline at the mat edge */
-body::after{
-  content:"";
+body::after {
+  content: "";
   position: fixed;
   inset: var(--frame);
   border: 1px solid var(--frame-color);
@@ -71,7 +71,7 @@ body::after{
 }
 
 /* Wrap + safe areas for iOS notch/home indicator */
-.wrap{
+.wrap {
   max-width: none;
   margin: 0;
   padding:
@@ -82,7 +82,7 @@ body::after{
 }
 
 /* NAV: sticky + subtle blur, but NOT a box */
-.nav{
+.nav {
   position: sticky;
   top: calc(var(--frame) + env(safe-area-inset-top));
   z-index: 50;
@@ -95,22 +95,27 @@ body::after{
   padding: 10px 0 14px;
   margin: 0;
 
-  border-bottom: 1px solid rgba(255,255,255,0.18);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   background: transparent;
 
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-.brand{
+.brand {
   font-size: 16px;
   text-decoration: none;
   color: var(--text);
   font-weight: 500;
   letter-spacing: 0.02em;
+  transition: all 0.3s ease;
 }
 
-.links a{
+.brand:hover {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.links a {
   margin-left: 14px;
   text-decoration: none;
   color: var(--muted);
@@ -118,46 +123,54 @@ body::after{
   font-size: 14px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-.links a:hover { color: var(--text); }
+.links a:hover { 
+  color: var(--text); 
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
 
-.links a.active{
+.links a.active {
   color: var(--text);
   text-decoration: underline;
-  text-decoration-color: rgba(255,255,255,0.65);
+  text-decoration-color: rgba(255, 255, 255, 0.65);
   text-underline-offset: 4px;
 }
 
 /* Keep header/footer from stretching */
-header.wrap, footer.wrap{ flex: 0 0 auto; }
+header.wrap, footer.wrap { flex: 0 0 auto; }
 
 /* Let main take remaining height */
-main.wrap{
+main.wrap {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
 }
 
-/* PANEL fills the rest */
-.panel{
+/* PANEL fills the rest - Glossy Glassmorphism Effect */
+.panel {
   margin-top: 0;
   border: 1px solid var(--panel-border);
   background: var(--panel);
-  box-shadow: none;
+  
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  border-radius: 12px; /* Softened edges */
 
   flex: 1 1 auto;
   min-height: 0; /* important for Safari */
 }
 
 /* inner container keeps typography centered even when panel is full-bleed */
-.panel-inner{
+.panel-inner {
   max-width: var(--max);
   margin: 0 auto;
   padding: 26px 26px 8px; /* tighter before the art */
 }
 
-.title{
+.title {
   margin: 0 0 12px;
   font-size: 48px;
   line-height: 1.06;
@@ -165,7 +178,7 @@ main.wrap{
   letter-spacing: -0.01em;
 }
 
-.lede{
+.lede {
   margin: 0 0 18px;
   color: var(--muted);
   font-size: 18.5px;
@@ -173,64 +186,67 @@ main.wrap{
 }
 
 /* stacked hierarchy */
-.section{
+.section {
   margin-top: 16px;
   padding-top: 14px;
-  border-top: 1px solid rgba(255,255,255,0.16);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
 }
 
-/* ✅ remove the “extra” divider under the LAST section (Email) */
-.panel-inner .section:last-of-type{
+/* remove the “extra” divider under the LAST section (Email) */
+.panel-inner .section:last-of-type {
   padding-bottom: 0;
 }
 
 /* remove any accidental rule before the art block */
-.panel-inner + .art{
+.panel-inner + .art {
   border-top: none !important;
 }
 
 /* (Optional) add a little breathing room between Email and the art */
-.panel-inner .section:last-of-type{
+.panel-inner .section:last-of-type {
   margin-bottom: 10px;
 }
 
-h2{
+h2 {
   margin: 0 0 10px;
   font-family: var(--sans);
   font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.82);
+  color: rgba(255, 255, 255, 0.82);
   font-weight: 650;
 }
 
-.meta{
+.meta {
   margin: 0;
   font-family: var(--sans);
   font-size: 13.5px;
-  color: rgba(255,255,255,0.86);
+  color: rgba(255, 255, 255, 0.86);
   letter-spacing: 0.02em;
 }
 
 /* --- ART (lighter + centered + less bottom-heavy) --- */
-.art{
+.art {
   margin: 0;
   padding: 18px 22px 22px;
 }
 
-/* Center the artwork block and make it narrower than the panel */
-.art-frame{
+/* Center the artwork block and make it narrower than the panel - Glossy Frame */
+.art-frame {
   width: min(760px, 100%);
   margin: 0 auto;
 
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.03);
   padding: 10px; /* thinner mat */
-  border: 1px solid rgba(255,255,255,0.22);
-  box-shadow: none; /* no drop shadow */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 /* image stays inside frame */
-.art-img{
+.art-img {
   display: block;
   width: 100%;
   height: auto;
@@ -238,256 +254,261 @@ h2{
   max-height: 280px; /* reduce dominance */
   object-fit: cover;
   object-position: center 62%;
-  border: 1px solid rgba(255,255,255,0.22);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
 }
 
 /* caption aligned with the frame */
-.art-cap{
+.art-cap {
   margin: 8px 0 0;
   padding: 0;
   text-align: center;
 
   font-family: var(--sans);
   font-size: 11.5px;
-  color: rgba(255,255,255,0.78);
+  color: rgba(255, 255, 255, 0.78);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   opacity: 0.9;
 }
 
 /* Links */
-a{
+a {
   color: inherit;
-  text-decoration-color: rgba(255,255,255,0.55);
+  text-decoration-color: rgba(255, 255, 255, 0.55);
   text-underline-offset: 3px;
+  transition: all 0.3s ease;
 }
-a:hover{
-  text-decoration-color: rgba(255,255,255,0.92);
+
+a:hover {
+  text-decoration-color: rgba(255, 255, 255, 0.92);
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
 /* Footer */
-.footer{
+.footer {
   margin-top: 22px;
   padding-top: 14px;
-  border-top: 1px solid rgba(255,255,255,0.18);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-.foot{
+.foot {
   margin: 0;
   font-family: var(--sans);
   font-size: 12px;
   letter-spacing: 0.12em;
-  color: rgba(255,255,255,0.78);
+  color: rgba(255, 255, 255, 0.78);
 }
 
 /* Responsive */
-@media (max-width: 720px){
+@media (max-width: 720px) {
   :root { --frame: 22px; }
-  .panel-inner{ padding: 22px 18px 8px; }
-  .title{ font-size: 42px; }
+  .panel-inner { padding: 22px 18px 8px; }
+  .title { font-size: 42px; }
 
-  .art{ padding: 16px 18px 20px; }
-  .art-img{ max-height: 240px; }
+  .art { padding: 16px 18px 20px; }
+  .art-img { max-height: 240px; }
 }
 
 /* --- Influences page components --- */
-.inf-bar{
+.inf-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 14px;
   padding: 12px 0 0;
   margin: 6px 0 18px;
-  border-top: 1px solid rgba(255,255,255,0.16);
-  color: rgba(255,255,255,0.72);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.72);
   font-family: var(--sans);
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
-.inf-bar__dots{
+.inf-bar__dots {
   letter-spacing: 0.28em;
   opacity: 0.7;
 }
 
-.influences{
+.influences {
   display: grid;
   grid-template-columns: 1fr;
   gap: 14px;
 }
 
-.inf{
+.inf {
   padding: 16px 0 0;
-  border-top: 1px solid rgba(255,255,255,0.16);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
 }
 
-.inf:first-child{
+.inf:first-child {
   border-top: none;
   padding-top: 0;
 }
 
-.inf-head{
+.inf-head {
   display: flex;
   align-items: baseline;
   gap: 12px;
   margin-bottom: 8px;
 }
 
-.inf-tag{
+.inf-tag {
   font-family: var(--sans);
   font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.88);
+  color: rgba(255, 255, 255, 0.88);
   font-weight: 650;
 }
 
-.inf-rule{
+.inf-rule {
   flex: 1;
   height: 1px;
-  background: rgba(255,255,255,0.14);
+  background: rgba(255, 255, 255, 0.14);
   transform: translateY(-3px);
 }
 
-/* (If you remove “Aphorism/Maxim/etc” from HTML, this can stay harmless) */
-.inf-meta{
+.inf-meta {
   font-family: var(--sans);
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.68);
+  color: rgba(255, 255, 255, 0.68);
 }
 
-.inf-quote{
+.inf-quote {
   margin: 0;
   font-size: 18px;
   line-height: 1.65;
-  color: rgba(255,255,255,0.90);
+  color: rgba(255, 255, 255, 0.90);
   max-width: 74ch;
 }
 
-@media (max-width: 720px){
-  .inf-quote{ font-size: 16.5px; }
+@media (max-width: 720px) {
+  .inf-quote { font-size: 16.5px; }
 }
 
-/* --- Publications page components (match Influences refinement) --- */
-.pub-section{
+/* --- Publications page components --- */
+.pub-section {
   margin-top: 18px;
 }
 
-.pub-section__head{
+.pub-section__head {
   display: flex;
   align-items: baseline;
   gap: 12px;
   padding-top: 16px;
-  border-top: 1px solid rgba(255,255,255,0.16);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
   margin-top: 18px;
 }
 
-.pub-section:first-of-type .pub-section__head{
+.pub-section:first-of-type .pub-section__head {
   margin-top: 0;
 }
 
-.pub-section__tag{
+.pub-section__tag {
   font-family: var(--sans);
   font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.88);
+  color: rgba(255, 255, 255, 0.88);
   font-weight: 650;
 }
 
-.pub-section__rule{
+.pub-section__rule {
   flex: 1;
   height: 1px;
-  background: rgba(255,255,255,0.14);
+  background: rgba(255, 255, 255, 0.14);
   transform: translateY(-3px);
 }
 
-.pub-list{
+.pub-list {
   display: grid;
   grid-template-columns: 1fr;
   gap: 14px;
   margin-top: 14px;
 }
 
-.pub{
+.pub {
   padding-top: 14px;
-  border-top: 1px solid rgba(255,255,255,0.16);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
 }
 
-.pub:first-child{
+.pub:first-child {
   border-top: none;
   padding-top: 0;
 }
 
-.pub-head{
+.pub-head {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 18px;
 }
 
-.pub-title{
+.pub-title {
   font-size: 18px;
   line-height: 1.55;
-  color: rgba(255,255,255,0.92);
+  color: rgba(255, 255, 255, 0.92);
   max-width: 70ch;
 }
 
-.pub-title a{
+.pub-title a {
   text-decoration: none;
 }
 
-.pub-title a:hover{
+.pub-title a:hover {
   text-decoration: underline;
-  text-decoration-color: rgba(255,255,255,0.72);
+  text-decoration-color: rgba(255, 255, 255, 0.72);
   text-underline-offset: 3px;
 }
 
-.pub-date{
+.pub-date {
   font-family: var(--sans);
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.68);
+  color: rgba(255, 255, 255, 0.68);
   white-space: nowrap;
 }
 
-.pub-meta{
+.pub-meta {
   margin-top: 6px;
   font-family: var(--sans);
   font-size: 13px;
-  color: rgba(255,255,255,0.82);
+  color: rgba(255, 255, 255, 0.82);
   letter-spacing: 0.02em;
 }
 
-.pub-venue{
-  color: rgba(255,255,255,0.90);
+.pub-venue {
+  color: rgba(255, 255, 255, 0.90);
 }
 
-@media (max-width: 720px){
-  .pub-head{ flex-direction: column; align-items: flex-start; gap: 6px; }
-  .pub-date{ white-space: normal; }
-  .pub-title{ font-size: 16.5px; }
+@media (max-width: 720px) {
+  .pub-head { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .pub-date { white-space: normal; }
+  .pub-title { font-size: 16.5px; }
 }
 
 /* --- Home hero: larger circular headshot that stays proportional --- */
-.hero{
+.hero {
   display: grid;
   grid-template-columns: clamp(170px, 18vw, 240px) 1fr;
   gap: 28px;
   align-items: center; /* centers the photo against taller lede */
 }
 
-.hero-photo{
+.hero-photo {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.headshot{
+/* Elevated Headshot with Hover Animation */
+.headshot {
   width: clamp(170px, 18vw, 240px);
   height: clamp(170px, 18vw, 240px);
   display: block;
@@ -495,48 +516,56 @@ a:hover{
   object-position: center 30%;
   border-radius: 999px;
 
-  border: 6px solid rgba(255,255,255,0.22);
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.10) inset;
+  border: 4px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-
-  /* if you want that slight left shift */
   transform: translateX(-10px);
+  
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
 }
 
-@media (max-width: 720px){
-  .hero{
+.headshot:hover {
+  transform: translateX(-10px) translateY(-6px) scale(1.03);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 720px) {
+  .hero {
     grid-template-columns: 1fr;
     gap: 16px;
     justify-items: center;
     text-align: left;
   }
-  .headshot{
+  .headshot {
     transform: none; /* don't offset on mobile */
+  }
+  .headshot:hover {
+    transform: translateY(-6px) scale(1.03);
   }
 }
 
 /* --- Gothic divider under the name (single definition) --- */
-.gothic-rule{
+.gothic-rule {
   position: relative;
   height: 22px;
   margin: 14px 0 10px;
   opacity: 0.96;
 }
 
-.gothic-rule::before{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  top:50%;
-  height:1px;
+.gothic-rule::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
   transform: translateY(-50%);
   background: linear-gradient(
     to right,
     transparent 0%,
-    rgba(255,255,255,0.18) 10%,
-    rgba(255,255,255,0.34) 50%,
-    rgba(255,255,255,0.18) 90%,
+    rgba(255, 255, 255, 0.18) 10%,
+    rgba(255, 255, 255, 0.34) 50%,
+    rgba(255, 255, 255, 0.18) 90%,
     transparent 100%
   );
 }
@@ -554,53 +583,52 @@ a:hover{
 
   background:
     /* side ornaments (left) */
-    linear-gradient(rgba(255,255,255,0.50), rgba(255,255,255,0.50)) 15px 50% / 1px 7px no-repeat,
-    linear-gradient(rgba(255,255,255,0.50), rgba(255,255,255,0.50)) 13px 50% / 5px 1px no-repeat,
-    linear-gradient(rgba(255,255,255,0.30), rgba(255,255,255,0.30))  4px 50% / 1px 5px no-repeat,
-    linear-gradient(rgba(255,255,255,0.30), rgba(255,255,255,0.30))  3px 50% / 3px 1px no-repeat,
+    linear-gradient(rgba(255, 255, 255, 0.50), rgba(255, 255, 255, 0.50)) 15px 50% / 1px 7px no-repeat,
+    linear-gradient(rgba(255, 255, 255, 0.50), rgba(255, 255, 255, 0.50)) 13px 50% / 5px 1px no-repeat,
+    linear-gradient(rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.30))  4px 50% / 1px 5px no-repeat,
+    linear-gradient(rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.30))  3px 50% / 3px 1px no-repeat,
 
     /* side ornaments (right) */
-    linear-gradient(rgba(255,255,255,0.50), rgba(255,255,255,0.50)) calc(100% - 15px) 50% / 1px 7px no-repeat,
-    linear-gradient(rgba(255,255,255,0.50), rgba(255,255,255,0.50)) calc(100% - 13px) 50% / 5px 1px no-repeat,
-    linear-gradient(rgba(255,255,255,0.30), rgba(255,255,255,0.30)) calc(100% -  4px) 50% / 1px 5px no-repeat,
-    linear-gradient(rgba(255,255,255,0.30), rgba(255,255,255,0.30)) calc(100% -  3px) 50% / 3px 1px no-repeat,
+    linear-gradient(rgba(255, 255, 255, 0.50), rgba(255, 255, 255, 0.50)) calc(100% - 15px) 50% / 1px 7px no-repeat,
+    linear-gradient(rgba(255, 255, 255, 0.50), rgba(255, 255, 255, 0.50)) calc(100% - 13px) 50% / 5px 1px no-repeat,
+    linear-gradient(rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.30)) calc(100% -  4px) 50% / 1px 5px no-repeat,
+    linear-gradient(rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.30)) calc(100% -  3px) 50% / 3px 1px no-repeat,
 
     /* center: cross beams */
-    linear-gradient(to bottom, transparent, rgba(255,255,255,0.95) 20% 80%, transparent)
+    linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.95) 20% 80%, transparent)
       center / 2.5px 100% no-repeat,
-    linear-gradient(to right, transparent, rgba(255,255,255,0.95) 25% 75%, transparent)
+    linear-gradient(to right, transparent, rgba(255, 255, 255, 0.95) 25% 75%, transparent)
       center / 22px 2.5px no-repeat,
 
     /* center: diagonal petals */
-    linear-gradient(135deg, transparent 15%, rgba(255,255,255,0.40) 44% 56%, transparent 85%)
+    linear-gradient(135deg, transparent 15%, rgba(255, 255, 255, 0.40) 44% 56%, transparent 85%)
       center / 15px 15px no-repeat,
-    linear-gradient(45deg,  transparent 15%, rgba(255,255,255,0.40) 44% 56%, transparent 85%)
+    linear-gradient(45deg,  transparent 15%, rgba(255, 255, 255, 0.40) 44% 56%, transparent 85%)
       center / 15px 15px no-repeat,
 
     /* center: halo ring */
-    radial-gradient(circle, transparent 7px, rgba(255,255,255,0.18) 7.8px 8.8px, transparent 9.5px)
+    radial-gradient(circle, transparent 7px, rgba(255, 255, 255, 0.18) 7.8px 8.8px, transparent 9.5px)
       center / 22px 22px no-repeat,
 
     /* center: radiant core */
-    radial-gradient(circle, rgba(255,255,255,1) 0 2px, rgba(255,255,255,0.35) 4px, transparent 7px)
+    radial-gradient(circle, rgba(255, 255, 255, 1) 0 2px, rgba(255, 255, 255, 0.35) 4px, transparent 7px)
       center / 16px 16px no-repeat;
 }
 
 /* Centered epigraph with oversized quotes */
-/* Quote after the painting */
-.quote{
+.quote {
   max-width: var(--max);
   margin: 0 auto;
   padding: 0 26px 18px;
   text-align: center;
 }
 
-.quote--after{
+.quote--after {
   padding-top: 14px; /* little breathing room after art */
 }
 
 /* Centered epigraph with oversized quotes */
-.quote-text{
+.quote-text {
   position: relative;
   margin: 0;
   padding: 18px 26px 16px;
@@ -608,59 +636,59 @@ a:hover{
   /* no border-top here; it would feel like another divider */
   font-size: 16.75px;
   line-height: 1.9;
-  color: rgba(255,255,255,0.92);
+  color: rgba(255, 255, 255, 0.92);
   letter-spacing: 0.01em;
   text-wrap: pretty;
 }
 
 .quote-text::before,
-.quote-text::after{
+.quote-text::after {
   position: absolute;
   font-family: var(--serif);
   font-size: 64px;
   line-height: 1;
-  color: rgba(255,255,255,0.26);
+  color: rgba(255, 255, 255, 0.26);
   pointer-events: none;
 }
 
-.quote-text::before{
+.quote-text::before {
   content: "“";
   left: 6px;
   top: 0px;
 }
 
-.quote-text::after{
+.quote-text::after {
   content: "”";
   right: 6px;
   bottom: -8px;
 }
 
-.quote-attrib{
+.quote-attrib {
   margin: 10px 0 0;
   font-family: var(--sans);
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.72);
+  color: rgba(255, 255, 255, 0.72);
   text-align: center;
 }
 
-@media (max-width: 720px){
-  .quote{ padding-left: 18px; padding-right: 18px; padding-bottom: 16px; }
-  .quote-text{ padding: 16px 18px 14px; font-size: 16px; }
-  .quote-text::before, .quote-text::after{ font-size: 54px; }
+@media (max-width: 720px) {
+  .quote { padding-left: 18px; padding-right: 18px; padding-bottom: 16px; }
+  .quote-text { padding: 16px 18px 14px; font-size: 16px; }
+  .quote-text::before, .quote-text::after { font-size: 54px; }
 }
 
-.art-break{
+.art-break {
   max-width: var(--max);
   margin: 16px auto;
   height: 1px;
   background: linear-gradient(
     to right,
     transparent 0%,
-    rgba(255,255,255,0.10) 10%,
-    rgba(255,255,255,0.26) 50%,
-    rgba(255,255,255,0.10) 90%,
+    rgba(255, 255, 255, 0.10) 10%,
+    rgba(255, 255, 255, 0.26) 50%,
+    rgba(255, 255, 255, 0.10) 90%,
     transparent 100%
   );
 }
