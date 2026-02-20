@@ -151,9 +151,15 @@ main.wrap {
 }
 
 .panel {
-  margin-top: 0;
-  /* FIX: Add margin to the bottom so it respects the white frame */
-  margin-bottom: calc(var(--frame) + env(safe-area-inset-bottom) + 16px);
+  /* Add space above the panel (below the nav) */
+  margin-top: 24px; 
+  
+  /* Add space on the left and right so it doesn't hug the frame */
+  margin-left: 16px;
+  margin-right: 16px;
+  
+  /* Keep the bottom margin from the previous fix, maybe slightly larger */
+  margin-bottom: calc(var(--frame) + env(safe-area-inset-bottom) + 24px);
   
   border: 1px solid var(--panel-border);
   background: var(--panel);
@@ -673,4 +679,13 @@ a:hover {
     rgba(26, 36, 33, 0.05) 90%,
     transparent 100%
   );
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .panel h1 {
+    /* Shrink the font size on mobile so it fits on one line */
+    font-size: 1.75rem; /* Adjust this number down (e.g., 1.6rem) if it still wraps */
+    letter-spacing: -0.02em; /* Optional: slightly tightens the letters to save space */
+  }
 }
