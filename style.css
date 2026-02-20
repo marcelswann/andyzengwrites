@@ -1,17 +1,17 @@
 :root {
-  /* Page background (inside the mat) - Restored Earthy Beige */
-  --bg: #9e8e77;
+  /* Page background - Very light, warm beige/cream */
+  --bg: #f4f1ea;
 
-  /* White type */
-  --text: rgba(255, 255, 255, 0.98);
-  --muted: rgba(255, 255, 255, 0.88);
+  /* Deep, dark greenish-black text */
+  --text: #1a2421;
+  --muted: #43524d;
 
-  /* Lines */
-  --rule: rgba(255, 255, 255, 0.25);
+  /* Lines & Borders (using the dark green tone) */
+  --rule: rgba(26, 36, 33, 0.12);
 
-  /* Translucent glass panel */
-  --panel: rgba(255, 255, 255, 0.25);
-  --panel-border: rgba(255, 255, 255, 0.18);
+  /* Translucent glass panel (frosted white to sit on the beige) */
+  --panel: rgba(255, 255, 255, 0.55);
+  --panel-border: rgba(255, 255, 255, 0.8);
 
   /* Layout */
   --max: 980px;
@@ -22,7 +22,7 @@
 
   /* Frame (white mat) */
   --frame: 16px;
-  --frame-color: rgba(255, 255, 255, 0.55);
+  --frame-color: rgba(26, 36, 33, 0.08);
 }
 
 * { box-sizing: border-box; }
@@ -49,12 +49,12 @@ body {
   flex-direction: column;
 }
 
-/* Beige page background INSIDE the mat with a very subtle depth gradient */
+/* Light beige page background INSIDE the mat with a very subtle depth gradient */
 body::before {
   content: "";
   position: fixed;
   inset: var(--frame);
-  background: radial-gradient(circle at top right, #a89984, var(--bg));
+  background: radial-gradient(circle at top right, #fdfcfb, var(--bg));
   pointer-events: none;
   z-index: -1;
 }
@@ -81,7 +81,7 @@ body::after {
     calc(22px + env(safe-area-inset-left));
 }
 
-/* NAV: sticky + subtle blur, but NOT a box */
+/* NAV: sticky + subtle blur */
 .nav {
   position: sticky;
   top: calc(var(--frame) + env(safe-area-inset-top));
@@ -95,7 +95,7 @@ body::after {
   padding: 10px 0 14px;
   margin: 0;
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom: 1px solid var(--rule);
   background: transparent;
 
   backdrop-filter: blur(12px);
@@ -106,13 +106,13 @@ body::after {
   font-size: 16px;
   text-decoration: none;
   color: var(--text);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.02em;
   transition: all 0.3s ease;
 }
 
 .brand:hover {
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+  text-shadow: 0 0 12px rgba(26, 36, 33, 0.15);
 }
 
 .links a {
@@ -123,18 +123,19 @@ body::after {
   font-size: 14px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  font-weight: 500;
   transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .links a:hover { 
   color: var(--text); 
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+  text-shadow: 0 0 12px rgba(26, 36, 33, 0.15);
 }
 
 .links a.active {
   color: var(--text);
   text-decoration: underline;
-  text-decoration-color: rgba(255, 255, 255, 0.65);
+  text-decoration-color: rgba(26, 36, 33, 0.4);
   text-underline-offset: 4px;
 }
 
@@ -148,35 +149,36 @@ main.wrap {
   flex-direction: column;
 }
 
-/* PANEL fills the rest - Glossy Glassmorphism Effect */
+/* PANEL fills the rest - Frosted Glassmorphism Effect */
 .panel {
   margin-top: 0;
   border: 1px solid var(--panel-border);
   background: var(--panel);
   
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  /* Soft, earthy shadow instead of harsh black */
-  box-shadow: 0 8px 32px rgba(85, 75, 60, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  /* Soft, dark greenish shadow */
+  box-shadow: 0 12px 40px rgba(26, 36, 33, 0.06);
   border-radius: 12px;
 
   flex: 1 1 auto;
-  min-height: 0; /* important for Safari */
+  min-height: 0;
 }
 
 /* inner container keeps typography centered even when panel is full-bleed */
 .panel-inner {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 26px 26px 8px; /* tighter before the art */
+  padding: 26px 26px 8px;
 }
 
 .title {
   margin: 0 0 12px;
   font-size: 48px;
   line-height: 1.06;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -0.01em;
+  color: #111816; /* Extra dark for the main title */
 }
 
 .lede {
@@ -190,22 +192,16 @@ main.wrap {
 .section {
   margin-top: 16px;
   padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 1px solid var(--rule);
 }
 
-/* remove the “extra” divider under the LAST section (Email) */
 .panel-inner .section:last-of-type {
   padding-bottom: 0;
+  margin-bottom: 10px;
 }
 
-/* remove any accidental rule before the art block */
 .panel-inner + .art {
   border-top: none !important;
-}
-
-/* (Optional) add a little breathing room between Email and the art */
-.panel-inner .section:last-of-type {
-  margin-bottom: 10px;
 }
 
 h2 {
@@ -214,52 +210,48 @@ h2 {
   font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.82);
-  font-weight: 650;
+  color: var(--text);
+  font-weight: 700;
 }
 
 .meta {
   margin: 0;
   font-family: var(--sans);
   font-size: 13.5px;
-  color: rgba(255, 255, 255, 0.86);
+  color: var(--muted);
   letter-spacing: 0.02em;
 }
 
-/* --- ART (lighter + centered + less bottom-heavy) --- */
+/* --- ART --- */
 .art {
   margin: 0;
   padding: 18px 22px 22px;
 }
 
-/* Center the artwork block and make it narrower than the panel - Glossy Frame */
+/* Glossy Frame */
 .art-frame {
   width: min(760px, 100%);
   margin: 0 auto;
 
-  background: rgba(255, 255, 255, 0.08);
-  padding: 10px; /* thinner mat */
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  border: 1px solid #ffffff;
   border-radius: 8px;
-  box-shadow: 0 12px 40px rgba(85, 75, 60, 0.2);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 12px 32px rgba(26, 36, 33, 0.08);
 }
 
-/* image stays inside frame */
 .art-img {
   display: block;
   width: 100%;
   height: auto;
   max-width: 100%;
-  max-height: 280px; /* reduce dominance */
+  max-height: 280px;
   object-fit: cover;
   object-position: center 62%;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(26, 36, 33, 0.08);
   border-radius: 4px;
 }
 
-/* caption aligned with the frame */
 .art-cap {
   margin: 8px 0 0;
   padding: 0;
@@ -267,31 +259,30 @@ h2 {
 
   font-family: var(--sans);
   font-size: 11.5px;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--muted);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  opacity: 0.9;
+  font-weight: 500;
 }
 
 /* Links */
 a {
   color: inherit;
-  text-decoration-color: rgba(255, 255, 255, 0.55);
+  text-decoration-color: rgba(26, 36, 33, 0.25);
   text-underline-offset: 3px;
   transition: all 0.3s ease;
 }
 
 a:hover {
-  text-decoration-color: rgba(255, 255, 255, 0.92);
-  color: #ffffff;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+  text-decoration-color: rgba(26, 36, 33, 0.8);
+  color: #000000;
 }
 
 /* Footer */
 .footer {
   margin-top: 22px;
   padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  border-top: 1px solid var(--rule);
 }
 
 .foot {
@@ -299,7 +290,7 @@ a:hover {
   font-family: var(--sans);
   font-size: 12px;
   letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--muted);
 }
 
 /* Responsive */
@@ -307,7 +298,6 @@ a:hover {
   :root { --frame: 22px; }
   .panel-inner { padding: 22px 18px 8px; }
   .title { font-size: 42px; }
-
   .art { padding: 16px 18px 20px; }
   .art-img { max-height: 240px; }
 }
@@ -320,8 +310,8 @@ a:hover {
   gap: 14px;
   padding: 12px 0 0;
   margin: 6px 0 18px;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
-  color: rgba(255, 255, 255, 0.72);
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
   font-family: var(--sans);
   font-size: 11px;
   letter-spacing: 0.18em;
@@ -330,7 +320,7 @@ a:hover {
 
 .inf-bar__dots {
   letter-spacing: 0.28em;
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 .influences {
@@ -341,7 +331,7 @@ a:hover {
 
 .inf {
   padding: 16px 0 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 1px solid var(--rule);
 }
 
 .inf:first-child {
@@ -361,14 +351,14 @@ a:hover {
   font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.88);
-  font-weight: 650;
+  color: var(--text);
+  font-weight: 700;
 }
 
 .inf-rule {
   flex: 1;
   height: 1px;
-  background: rgba(255, 255, 255, 0.14);
+  background: var(--rule);
   transform: translateY(-3px);
 }
 
@@ -377,14 +367,14 @@ a:hover {
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.68);
+  color: var(--muted);
 }
 
 .inf-quote {
   margin: 0;
   font-size: 18px;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.90);
+  color: var(--text);
   max-width: 74ch;
 }
 
@@ -402,7 +392,7 @@ a:hover {
   align-items: baseline;
   gap: 12px;
   padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 1px solid var(--rule);
   margin-top: 18px;
 }
 
@@ -415,14 +405,14 @@ a:hover {
   font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.88);
-  font-weight: 650;
+  color: var(--text);
+  font-weight: 700;
 }
 
 .pub-section__rule {
   flex: 1;
   height: 1px;
-  background: rgba(255, 255, 255, 0.14);
+  background: var(--rule);
   transform: translateY(-3px);
 }
 
@@ -435,7 +425,7 @@ a:hover {
 
 .pub {
   padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 1px solid var(--rule);
 }
 
 .pub:first-child {
@@ -453,8 +443,9 @@ a:hover {
 .pub-title {
   font-size: 18px;
   line-height: 1.55;
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--text);
   max-width: 70ch;
+  font-weight: 500;
 }
 
 .pub-title a {
@@ -463,7 +454,7 @@ a:hover {
 
 .pub-title a:hover {
   text-decoration: underline;
-  text-decoration-color: rgba(255, 255, 255, 0.72);
+  text-decoration-color: rgba(26, 36, 33, 0.4);
   text-underline-offset: 3px;
 }
 
@@ -472,7 +463,7 @@ a:hover {
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.68);
+  color: var(--muted);
   white-space: nowrap;
 }
 
@@ -480,12 +471,13 @@ a:hover {
   margin-top: 6px;
   font-family: var(--sans);
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--muted);
   letter-spacing: 0.02em;
 }
 
 .pub-venue {
-  color: rgba(255, 255, 255, 0.90);
+  color: var(--text);
+  font-weight: 500;
 }
 
 @media (max-width: 720px) {
@@ -494,12 +486,12 @@ a:hover {
   .pub-title { font-size: 16.5px; }
 }
 
-/* --- Home hero: larger circular headshot that stays proportional --- */
+/* --- Home hero --- */
 .hero {
   display: grid;
   grid-template-columns: clamp(170px, 18vw, 240px) 1fr;
   gap: 28px;
-  align-items: center; /* centers the photo against taller lede */
+  align-items: center;
 }
 
 .hero-photo {
@@ -508,7 +500,7 @@ a:hover {
   align-items: center;
 }
 
-/* Elevated Headshot with Hover Animation */
+/* Elevated Headshot */
 .headshot {
   width: clamp(170px, 18vw, 240px);
   height: clamp(170px, 18vw, 240px);
@@ -517,8 +509,9 @@ a:hover {
   object-position: center 30%;
   border-radius: 999px;
 
-  border: 6px solid rgba(255, 255, 255, 0.22);
-  box-shadow: 0 10px 25px rgba(85, 75, 60, 0.25), 0 0 0 1px rgba(0,0,0,0.05) inset;
+  /* Crisp white border to pop off the beige */
+  border: 6px solid #ffffff;
+  box-shadow: 0 10px 25px rgba(26, 36, 33, 0.12), 0 0 0 1px rgba(0,0,0,0.02) inset;
   cursor: pointer;
   transform: translateX(-10px);
   
@@ -527,7 +520,7 @@ a:hover {
 
 .headshot:hover {
   transform: translateX(-10px) translateY(-6px) scale(1.03);
-  box-shadow: 0 18px 40px rgba(85, 75, 60, 0.35), 0 0 0 1px rgba(0,0,0,0.05) inset;
+  box-shadow: 0 18px 40px rgba(26, 36, 33, 0.18), 0 0 0 1px rgba(0,0,0,0.02) inset;
 }
 
 @media (max-width: 720px) {
@@ -538,82 +531,75 @@ a:hover {
     text-align: left;
   }
   .headshot {
-    transform: none; /* don't offset on mobile */
+    transform: none;
   }
   .headshot:hover {
     transform: translateY(-6px) scale(1.03);
   }
 }
 
-/* --- Gothic divider under the name (single definition) --- */
+/* --- HIGHLY ORNATE GOTHIC DIVIDER --- */
 .gothic-rule {
   position: relative;
-  height: 22px;
-  margin: 14px 0 10px;
-  opacity: 0.96;
+  height: 34px;
+  margin: 18px 0 14px;
+  opacity: 0.85;
 }
 
+/* The double horizontal tracking lines */
 .gothic-rule::before {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   top: 50%;
-  height: 1px;
+  height: 5px;
   transform: translateY(-50%);
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(255, 255, 255, 0.18) 10%,
-    rgba(255, 255, 255, 0.34) 50%,
-    rgba(255, 255, 255, 0.18) 90%,
-    transparent 100%
-  );
+  background: 
+    /* Top thin line */
+    linear-gradient(to right, transparent 0%, rgba(26, 36, 33, 0.1) 10%, rgba(26, 36, 33, 0.5) 50%, rgba(26, 36, 33, 0.1) 90%, transparent 100%) top / 100% 1px no-repeat,
+    /* Bottom thin line */
+    linear-gradient(to right, transparent 0%, rgba(26, 36, 33, 0.1) 15%, rgba(26, 36, 33, 0.3) 50%, rgba(26, 36, 33, 0.1) 85%, transparent 100%) bottom / 100% 1px no-repeat;
 }
 
-/* center floral rosette + two small side ornaments */
+/* The intricate geometric filigree center */
 .gothic-rule::after {
   content: "";
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 90px;
-  height: 22px;
+  width: 160px;
+  height: 34px;
   transform: translate(-50%, -50%);
   pointer-events: none;
 
   background:
-    /* side ornaments (left) */
-    linear-gradient(rgba(255, 255, 255, 0.50), rgba(255, 255, 255, 0.50)) 15px 50% / 1px 7px no-repeat,
-    linear-gradient(rgba(255, 255, 255, 0.50), rgba(255, 255, 255, 0.50)) 13px 50% / 5px 1px no-repeat,
-    linear-gradient(rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.30))  4px 50% / 1px 5px no-repeat,
-    linear-gradient(rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.30))  3px 50% / 3px 1px no-repeat,
+    /* 1. Center large diamond outline */
+    linear-gradient(45deg, transparent 46%, rgba(26, 36, 33, 0.8) 48%, rgba(26, 36, 33, 0.8) 52%, transparent 54%) center / 18px 18px no-repeat,
+    linear-gradient(-45deg, transparent 46%, rgba(26, 36, 33, 0.8) 48%, rgba(26, 36, 33, 0.8) 52%, transparent 54%) center / 18px 18px no-repeat,
+    
+    /* 2. Inner solid diamond */
+    linear-gradient(45deg, transparent 40%, rgba(26, 36, 33, 0.9) 40%, rgba(26, 36, 33, 0.9) 60%, transparent 60%) center / 8px 8px no-repeat,
+    
+    /* 3. Flanking medium diamonds */
+    linear-gradient(45deg, transparent 40%, rgba(26, 36, 33, 0.6) 40%, rgba(26, 36, 33, 0.6) 60%, transparent 60%) 46px 50% / 8px 8px no-repeat,
+    linear-gradient(45deg, transparent 40%, rgba(26, 36, 33, 0.6) 40%, rgba(26, 36, 33, 0.6) 60%, transparent 60%) calc(100% - 46px) 50% / 8px 8px no-repeat,
+    
+    /* 4. Outer small diamonds */
+    linear-gradient(45deg, transparent 40%, rgba(26, 36, 33, 0.4) 40%, rgba(26, 36, 33, 0.4) 60%, transparent 60%) 24px 50% / 5px 5px no-repeat,
+    linear-gradient(45deg, transparent 40%, rgba(26, 36, 33, 0.4) 40%, rgba(26, 36, 33, 0.4) 60%, transparent 60%) calc(100% - 24px) 50% / 5px 5px no-repeat,
+    
+    /* 5. Vertical crossbars (wrought iron effect) */
+    linear-gradient(to bottom, transparent 15%, rgba(26, 36, 33, 0.5) 15%, rgba(26, 36, 33, 0.5) 85%, transparent 85%) 35px 50% / 1.5px 18px no-repeat,
+    linear-gradient(to bottom, transparent 15%, rgba(26, 36, 33, 0.5) 15%, rgba(26, 36, 33, 0.5) 85%, transparent 85%) calc(100% - 35px) 50% / 1.5px 18px no-repeat,
+    
+    /* 6. Inner vertical crossbars (taller) */
+    linear-gradient(to bottom, transparent 5%, rgba(26, 36, 33, 0.6) 5%, rgba(26, 36, 33, 0.6) 95%, transparent 95%) 58px 50% / 1.5px 24px no-repeat,
+    linear-gradient(to bottom, transparent 5%, rgba(26, 36, 33, 0.6) 5%, rgba(26, 36, 33, 0.6) 95%, transparent 95%) calc(100% - 58px) 50% / 1.5px 24px no-repeat,
 
-    /* side ornaments (right) */
-    linear-gradient(rgba(255, 255, 255, 0.50), rgba(255, 255, 255, 0.50)) calc(100% - 15px) 50% / 1px 7px no-repeat,
-    linear-gradient(rgba(255, 255, 255, 0.50), rgba(255, 255, 255, 0.50)) calc(100% - 13px) 50% / 5px 1px no-repeat,
-    linear-gradient(rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.30)) calc(100% -  4px) 50% / 1px 5px no-repeat,
-    linear-gradient(rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.30)) calc(100% -  3px) 50% / 3px 1px no-repeat,
-
-    /* center: cross beams */
-    linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.95) 20% 80%, transparent)
-      center / 2.5px 100% no-repeat,
-    linear-gradient(to right, transparent, rgba(255, 255, 255, 0.95) 25% 75%, transparent)
-      center / 22px 2.5px no-repeat,
-
-    /* center: diagonal petals */
-    linear-gradient(135deg, transparent 15%, rgba(255, 255, 255, 0.40) 44% 56%, transparent 85%)
-      center / 15px 15px no-repeat,
-    linear-gradient(45deg,  transparent 15%, rgba(255, 255, 255, 0.40) 44% 56%, transparent 85%)
-      center / 15px 15px no-repeat,
-
-    /* center: halo ring */
-    radial-gradient(circle, transparent 7px, rgba(255, 255, 255, 0.18) 7.8px 8.8px, transparent 9.5px)
-      center / 22px 22px no-repeat,
-
-    /* center: radiant core */
-    radial-gradient(circle, rgba(255, 255, 255, 1) 0 2px, rgba(255, 255, 255, 0.35) 4px, transparent 7px)
-      center / 16px 16px no-repeat;
+    /* 7. Tiny dots at the very ends */
+    radial-gradient(circle, rgba(26, 36, 33, 0.5) 40%, transparent 50%) 8px 50% / 4px 4px no-repeat,
+    radial-gradient(circle, rgba(26, 36, 33, 0.5) 40%, transparent 50%) calc(100% - 8px) 50% / 4px 4px no-repeat;
 }
 
 /* Centered epigraph with oversized quotes */
@@ -625,19 +611,17 @@ a:hover {
 }
 
 .quote--after {
-  padding-top: 14px; /* little breathing room after art */
+  padding-top: 14px;
 }
 
-/* Centered epigraph with oversized quotes */
 .quote-text {
   position: relative;
   margin: 0;
   padding: 18px 26px 16px;
 
-  /* no border-top here; it would feel like another divider */
   font-size: 16.75px;
   line-height: 1.9;
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--text);
   letter-spacing: 0.01em;
   text-wrap: pretty;
 }
@@ -648,7 +632,7 @@ a:hover {
   font-family: var(--serif);
   font-size: 64px;
   line-height: 1;
-  color: rgba(255, 255, 255, 0.26);
+  color: rgba(26, 36, 33, 0.12); /* Subtle dark quotes */
   pointer-events: none;
 }
 
@@ -670,14 +654,9 @@ a:hover {
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--muted);
   text-align: center;
-}
-
-@media (max-width: 720px) {
-  .quote { padding-left: 18px; padding-right: 18px; padding-bottom: 16px; }
-  .quote-text { padding: 16px 18px 14px; font-size: 16px; }
-  .quote-text::before, .quote-text::after { font-size: 54px; }
+  font-weight: 500;
 }
 
 .art-break {
@@ -687,9 +666,9 @@ a:hover {
   background: linear-gradient(
     to right,
     transparent 0%,
-    rgba(255, 255, 255, 0.10) 10%,
-    rgba(255, 255, 255, 0.26) 50%,
-    rgba(255, 255, 255, 0.10) 90%,
+    rgba(26, 36, 33, 0.05) 10%,
+    rgba(26, 36, 33, 0.15) 50%,
+    rgba(26, 36, 33, 0.05) 90%,
     transparent 100%
   );
 }
