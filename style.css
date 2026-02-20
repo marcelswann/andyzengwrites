@@ -3,8 +3,8 @@
   --bg: #f4f1ea;
 
   /* Deep, dark greenish-black text */
-  --text: #1a2421;
-  --muted: #43524d;
+  --text: ##4C4128;
+  --muted: #6A5B38;
 
   /* Lines & Borders (using the dark green tone) */
   --rule: rgba(26, 36, 33, 0.12);
