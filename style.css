@@ -35,28 +35,28 @@ html, body {
 
 /* Thick white mat */
 body {
-  min-height: 100svh;
-  padding: var(--frame);
-  background: #ffffff;
+  /* FIX: Use dvh instead of svh for iOS, and remove padding */
+  min-height: 100dvh;
+  margin: 0;
+  background: var(--bg);
 
   font: 16.5px/1.75 var(--serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 
-  /* page fill behavior */
   display: flex;
   flex-direction: column;
 }
 
-/* Light beige page background INSIDE the mat with a very subtle depth gradient */
+/* FIX: The white frame is now a fixed border that sits ON TOP of the page */
 body::before {
   content: "";
   position: fixed;
-  inset: var(--frame);
-  background: radial-gradient(circle at top right, #fdfcfb, var(--bg));
+  inset: 0;
+  border: var(--frame) solid #ffffff;
   pointer-events: none;
-  z-index: -1;
+  z-index: 9999; /* Keeps the white mat above everything */
 }
 
 /* Optional inner hairline at the mat edge */
@@ -81,7 +81,6 @@ body::after {
     calc(22px + env(safe-area-inset-left));
 }
 
-/* NAV: sticky + subtle blur */
 .nav {
   position: sticky;
   top: calc(var(--frame) + env(safe-area-inset-top));
@@ -96,7 +95,9 @@ body::after {
   margin: 0;
 
   border-bottom: 1px solid var(--rule);
-  background: transparent;
+  
+  /* FIX: Change from transparent to a semi-transparent beige */
+  background: rgba(244, 241, 234, 0.85); 
 
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -149,15 +150,16 @@ main.wrap {
   flex-direction: column;
 }
 
-/* PANEL fills the rest - Frosted Glassmorphism Effect */
 .panel {
   margin-top: 0;
+  /* FIX: Add margin to the bottom so it respects the white frame */
+  margin-bottom: calc(var(--frame) + env(safe-area-inset-bottom) + 16px);
+  
   border: 1px solid var(--panel-border);
   background: var(--panel);
   
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  /* Soft, dark greenish shadow */
   box-shadow: 0 12px 40px rgba(26, 36, 33, 0.06);
   border-radius: 12px;
 
