@@ -160,7 +160,7 @@
         const href = linkEl ? linkEl.getAttribute("href") : "/publications.html";
 
         container.innerHTML = `
-          <p class="home-publication-label">Latest Out Piece</p>
+          <p class="home-publication-label">Latest Piece</p>
           <h3 class="home-publication-title">
             <a href="${href}" ${href.startsWith("http") ? 'target="_blank" rel="noopener noreferrer"' : ""}>
               ${titleHTML}
@@ -170,7 +170,7 @@
         `;
       } catch (err) {
         container.innerHTML = `
-          <p class="home-publication-label">Latest Out Piece</p>
+          <p class="home-publication-label">Latest Piece</p>
           <h3 class="home-publication-title"><a href="/publications.html">View Publications</a></h3>
         `;
       }
