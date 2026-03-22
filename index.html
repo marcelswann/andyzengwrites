@@ -155,7 +155,7 @@
           // Inject the hyperlinked title, followed by a line break and the "View More..." link
           container.innerHTML = `
             <a href="${href}" ${href.startsWith("http") ? 'target="_blank" rel="noopener noreferrer"' : ""}>${titleHTML}</a><br />
-            <a href="/publications.html">View More...</a>
+            <a href="/publications.html">View more...</a>
           `;
         } else {
           container.innerHTML = '<a href="/publications.html">View Publications</a>';
