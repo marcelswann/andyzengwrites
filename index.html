@@ -66,15 +66,10 @@
           </p>
         </section>
 
-        <section class="section home-publications">
+        <section class="section">
           <h2>Publications</h2>
-
-          <div id="latestPublication" class="home-publication-preview">
-            <p class="home-publication-label">Loading latest publication…</p>
-          </div>
-
-          <p class="home-publications-footer">
-            <a class="home-publications-link" href="/publications.html">View More...</a>
+          <p class="meta" id="latestPublication">
+            <a href="/publications.html">Loading latest publication…</a>
           </p>
         </section>
       </div>
@@ -141,38 +136,31 @@
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, "text/html");
 
+        // Find the "Out" section, then the first publication inside it
         const outSection = doc.querySelector('section.pub-section[aria-label="Out"]');
-        const firstPub = outSection?.querySelector(".pub");
+        const firstPub = outSection ? outSection.querySelector(".pub") : null;
 
         if (!firstPub) {
-          container.innerHTML = '<p class="home-publication-label">No published pieces available yet.</p>';
+          container.innerHTML = '<a href="/publications.html">View Publications</a>';
           return;
         }
 
-        const titleEl = firstPub.querySelector(".pub-title");
-        const linkEl = titleEl?.querySelector("a");
-        const dateEl = firstPub.querySelector(".pub-date");
-        const metaEl = firstPub.querySelector(".pub-meta");
+        // Extract only the hyperlink from the title
+        const linkEl = firstPub.querySelector(".pub-title a");
 
-        const titleHTML = titleEl ? titleEl.innerHTML : "";
-        const dateText = dateEl ? dateEl.textContent.trim() : "";
-        const metaHTML = metaEl ? metaEl.innerHTML : "";
-        const href = linkEl ? linkEl.getAttribute("href") : "/publications.html";
+        if (linkEl) {
+          const href = linkEl.getAttribute("href");
+          const titleHTML = linkEl.innerHTML; // Keeps any italics (<em>) intact
+          
+          // Inject just the hyperlinked title, matching the style of the other sections
+          container.innerHTML = `<a href="${href}" ${href.startsWith("http") ? 'target="_blank" rel="noopener noreferrer"' : ""}>${titleHTML}</a>`;
+        } else {
+          container.innerHTML = '<a href="/publications.html">View Publications</a>';
+        }
 
-        container.innerHTML = `
-          <p class="home-publication-label">Latest Piece</p>
-          <h3 class="home-publication-title">
-            <a href="${href}" ${href.startsWith("http") ? 'target="_blank" rel="noopener noreferrer"' : ""}>
-              ${titleHTML}
-            </a>
-          </h3>
-          <p class="home-publication-meta">${dateText}${metaHTML ? " — " + metaHTML : ""}</p>
-        `;
       } catch (err) {
-        container.innerHTML = `
-          <p class="home-publication-label">Latest Piece</p>
-          <h3 class="home-publication-title"><a href="/publications.html">View Publications</a></h3>
-        `;
+        // Fallback if fetch fails (e.g., viewing locally without a server)
+        container.innerHTML = '<a href="/publications.html">View Publications</a>';
       }
     }
 
