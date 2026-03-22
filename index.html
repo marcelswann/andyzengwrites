@@ -152,8 +152,11 @@
           const href = linkEl.getAttribute("href");
           const titleHTML = linkEl.innerHTML; // Keeps any italics (<em>) intact
           
-          // Inject just the hyperlinked title, matching the style of the other sections
-          container.innerHTML = `<a href="${href}" ${href.startsWith("http") ? 'target="_blank" rel="noopener noreferrer"' : ""}>${titleHTML}</a>`;
+          // Inject the hyperlinked title, followed by a line break and the "View More..." link
+          container.innerHTML = `
+            <a href="${href}" ${href.startsWith("http") ? 'target="_blank" rel="noopener noreferrer"' : ""}>${titleHTML}</a><br />
+            <a href="/publications.html">View More...</a>
+          `;
         } else {
           container.innerHTML = '<a href="/publications.html">View Publications</a>';
         }
