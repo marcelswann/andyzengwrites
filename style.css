@@ -669,23 +669,26 @@ nav a {
 }
 
 /* --- Home hero (cleaned) --- */
+/* --- Home hero (centered) --- */
 .hero {
   display: block;
+  text-align: center;
 }
 
 .hero-top {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1.25rem;
   margin-bottom: 2rem;
 }
 
 .hero-photo {
-  flex: 0 0 220px;
   width: 220px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
 }
 
 .headshot {
@@ -707,12 +710,14 @@ nav a {
 }
 
 .hero-heading {
-  flex: 1;
+  width: 100%;
   min-width: 0;
+  text-align: center;
 }
 
 .hero-heading .title {
   margin: 0;
+  text-align: center;
 }
 
 .hero-heading .gothic-rule {
@@ -721,22 +726,29 @@ nav a {
 
 .hero-bio {
   max-width: 48rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-bio .lede {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (max-width: 900px) {
-  .hero-top {
-    flex-direction: column;
-    align-items: flex-start;
+  .hero-photo {
+    width: 180px;
+  }
+
+  .headshot {
+    width: 180px;
+    height: 180px;
   }
 
   .hero-bio {
     max-width: none;
   }
-
-  .hero-photo {
-    width: 180px;
-    flex-basis: 180px;
-  }
+}
 
   .headshot {
     width: 180px;
