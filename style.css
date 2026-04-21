@@ -717,3 +717,45 @@ header a,
 nav a {
   font-family: inherit; 
 }
+
+.hero-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.hero-titleblock {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-body {
+  max-width: 48rem;
+  margin-left: calc(220px + 2rem);
+}
+
+.hero-photo {
+  flex: 0 0 220px;
+  width: 220px;
+}
+
+.headshot {
+  display: block;
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+@media (max-width: 900px) {
+  .hero-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-body {
+    margin-left: 0;
+    max-width: none;
+  }
+}
