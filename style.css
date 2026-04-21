@@ -759,3 +759,10 @@ nav a {
     max-width: none;
   }
 }
+
+.quote-text {
+  margin: 0 0 1rem 0;
+  padding-left: 2rem;
+  text-align: left;
+  text-indent: 0;
+}
