@@ -670,9 +670,10 @@ nav a {
 
 /* --- Home hero (cleaned) --- */
 /* --- Home hero (centered) --- */
+/* --- Home hero (centered only for name + bio) --- */
+/* --- Home hero (centered only for name + bio) --- */
 .hero {
   display: block;
-  text-align: center;
 }
 
 .hero-top {
