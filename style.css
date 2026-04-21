@@ -718,21 +718,11 @@ nav a {
   font-family: inherit; 
 }
 
-.hero-header {
+.hero-top {
   display: flex;
   align-items: center;
   gap: 2rem;
   margin-bottom: 2rem;
-}
-
-.hero-titleblock {
-  flex: 1;
-  min-width: 0;
-}
-
-.hero-body {
-  max-width: 48rem;
-  margin-left: calc(220px + 2rem);
 }
 
 .hero-photo {
@@ -748,18 +738,33 @@ nav a {
   border-radius: 50%;
 }
 
+.hero-heading {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-heading .title {
+  margin: 0;
+}
+
+.hero-heading .gothic-rule {
+  margin-top: 1rem;
+}
+
+.hero-bio {
+  max-width: 48rem;
+}
+
 @media (max-width: 900px) {
-  .hero-header {
+  .hero-top {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .hero-body {
-    margin-left: 0;
+  .hero-bio {
     max-width: none;
   }
 }
-
 .quote-text {
   margin: 0 0 1rem 0;
   padding-left: 2rem;
