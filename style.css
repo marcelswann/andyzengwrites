@@ -518,58 +518,6 @@ a:hover {
   .pub-title { font-size: 16.5px; }
 }
 
-/* --- Home hero --- */
-.hero {
-  display: grid;
-  grid-template-columns: clamp(170px, 18vw, 240px) 1fr;
-  gap: 28px;
-  align-items: center;
-}
-
-.hero-photo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Elevated Headshot */
-.headshot {
-  width: clamp(170px, 18vw, 240px);
-  height: clamp(170px, 18vw, 240px);
-  display: block;
-  object-fit: cover;
-  object-position: center 30%;
-  border-radius: 999px;
-
-  /* Crisp white border to pop off the beige */
-  border: 6px solid #ffffff;
-  box-shadow: 0 10px 25px rgba(26, 36, 33, 0.12), 0 0 0 1px rgba(0,0,0,0.02) inset;
-  cursor: pointer;
-  transform: translateX(-10px);
-  
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-}
-
-.headshot:hover {
-  transform: translateX(-10px) translateY(-6px) scale(1.03);
-  box-shadow: 0 18px 40px rgba(26, 36, 33, 0.18), 0 0 0 1px rgba(0,0,0,0.02) inset;
-}
-
-@media (max-width: 720px) {
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    justify-items: center;
-    text-align: left;
-  }
-  .headshot {
-    transform: none;
-  }
-  .headshot:hover {
-    transform: translateY(-6px) scale(1.03);
-  }
-}
-
 /* --- HIGHLY ORNATE GOTHIC DIVIDER --- */
 .gothic-rule {
   position: relative;
@@ -634,12 +582,11 @@ a:hover {
     radial-gradient(circle, rgba(26, 36, 33, 0.5) 40%, transparent 50%) calc(100% - 8px) 50% / 4px 4px no-repeat;
 }
 
-/* Centered epigraph with oversized quotes */
+/* Left-aligned indented epigraph */
 .quote {
   max-width: var(--max);
   margin: 0 auto;
   padding: 0 26px 18px;
-  text-align: center;
 }
 
 .quote--after {
@@ -648,46 +595,31 @@ a:hover {
 
 .quote-text {
   position: relative;
-  margin: 0;
-  padding: 18px 26px 16px;
-
+  margin: 0 0 1rem 0;
+  padding: 18px 0 16px 2rem;
   font-size: 16.75px;
   line-height: 1.9;
   color: var(--text);
   letter-spacing: 0.01em;
   text-wrap: pretty;
+  text-align: left;
+  text-indent: 0;
 }
 
 .quote-text::before,
 .quote-text::after {
-  position: absolute;
-  font-family: var(--serif);
-  font-size: 64px;
-  line-height: 1;
-  color: rgba(26, 36, 33, 0.12); /* Subtle dark quotes */
-  pointer-events: none;
-}
-
-.quote-text::before {
-  content: "“";
-  left: 6px;
-  top: 0px;
-}
-
-.quote-text::after {
-  content: "”";
-  right: 6px;
-  bottom: -8px;
+  display: none;
 }
 
 .quote-attrib {
   margin: 10px 0 0;
+  padding-left: 2rem;
   font-family: var(--sans);
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--muted);
-  text-align: center;
+  text-align: left;
   font-weight: 500;
 }
 
@@ -718,6 +650,11 @@ nav a {
   font-family: inherit; 
 }
 
+/* --- Home hero (cleaned) --- */
+.hero {
+  display: block;
+}
+
 .hero-top {
   display: flex;
   align-items: center;
@@ -728,6 +665,9 @@ nav a {
 .hero-photo {
   flex: 0 0 220px;
   width: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .headshot {
@@ -735,7 +675,17 @@ nav a {
   width: 220px;
   height: 220px;
   object-fit: cover;
+  object-position: center 30%;
   border-radius: 50%;
+  border: 6px solid #ffffff;
+  box-shadow: 0 10px 25px rgba(26, 36, 33, 0.12), 0 0 0 1px rgba(0,0,0,0.02) inset;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.headshot:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 18px 40px rgba(26, 36, 33, 0.18), 0 0 0 1px rgba(0,0,0,0.02) inset;
 }
 
 .hero-heading {
@@ -764,10 +714,14 @@ nav a {
   .hero-bio {
     max-width: none;
   }
-}
-.quote-text {
-  margin: 0 0 1rem 0;
-  padding-left: 2rem;
-  text-align: left;
-  text-indent: 0;
+
+  .hero-photo {
+    width: 180px;
+    flex-basis: 180px;
+  }
+
+  .headshot {
+    width: 180px;
+    height: 180px;
+  }
 }
