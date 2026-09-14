@@ -3,8 +3,8 @@
   --bg: #f4f1ea;
 
   /* Deep, dark greenish-black text */
-  --text: #1a2421;
-  --muted: #43524d;
+  --text: #35251f;
+  --muted: #6b5549;
 
   /* Lines & Borders (using the dark green tone) */
   --rule: rgba(26, 36, 33, 0.12);
@@ -210,7 +210,7 @@ main.wrap {
   line-height: 1.06;
   font-weight: 500;
   letter-spacing: -0.01em;
-  color: #111816;
+  color: #35251f;
 }
 
 .lede {
@@ -307,7 +307,7 @@ a {
 
 a:hover {
   text-decoration-color: rgba(26, 36, 33, 0.8);
-  color: #000000;
+  color: var(--text);
 }
 
 /* Footer */
