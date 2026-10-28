@@ -1,44 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <title>Andy Zeng — fractured gold rune</title>
-  <defs>
-    <radialGradient id="stone" cx="0.45" cy="0.35" r="0.8">
-      <stop stop-color="#28281d"/>
-      <stop offset="1" stop-color="#0d100d"/>
-    </radialGradient>
-    <linearGradient id="gold" x1="0.1" y1="0" x2="0.85" y2="1">
-      <stop stop-color="#aa7c2c"/>
-      <stop offset="0.23" stop-color="#f6df92"/>
-      <stop offset="0.53" stop-color="#d3a54c"/>
-      <stop offset="0.78" stop-color="#f1d785"/>
-      <stop offset="1" stop-color="#9b6b24"/>
-    </linearGradient>
-    <linearGradient id="blade" x1="0" y1="0" x2="1" y2="0.25">
-      <stop stop-color="#b48b3d"/>
-      <stop offset="0.5" stop-color="#fff0b6"/>
-      <stop offset="1" stop-color="#ba8d36"/>
-    </linearGradient>
-    <filter id="ember" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="1.7"/>
-    </filter>
-    <g id="sigil">
-      <path d="M35.5 12.4C22 9.3 9.4 20.2 9.3 34.3 8.8 47 18.9 57.2 31.6 56.5 46.4 55.9 56.5 42.4 53.1 29.1L50.1 30.1C52.5 42.2 43.8 52.4 31.7 53.1 20.9 53.8 12.5 45.1 12.7 34.4 12.9 22.4 23.1 13.7 34.5 15.6Z"/>
-      <path d="M43.9 14.1C48.1 16.8 51.1 20.5 52.5 25.2L49.5 26.3C48.3 22.3 46.1 19.6 42.9 17.3Z"/>
-      <path d="M40.8 3 43.1 10.5 42.4 52.1 40.1 61 39.1 52.4 40 14.2Z" fill="url(#blade)"/>
-      <path d="m40.1 16.1-7.5-7.6 1.9-.7 7.3 4.5Z"/>
-      <path d="m42.1 13.8 6.4-6.9-.8 4.4-5.2 6.3Z"/>
-    </g>
-  </defs>
-  <rect x="0.5" y="0.5" width="63" height="63" rx="9" fill="url(#stone)" stroke="#8e773c" stroke-opacity="0.3"/>
-  <use href="#sigil" fill="#dbb85f" opacity="0.2" filter="url(#ember)"/>
-  <use href="#sigil" fill="url(#gold)"/>
-  <g fill="none" stroke="#fff0b8" stroke-width="0.65" stroke-linecap="round" opacity="0.75">
-    <path d="M13.6 28.5c2.5-8.4 10.2-14.4 18.4-14.1M17.9 49c4 3.5 8.3 4.6 12.4 4.3M50.9 32c1 7.2-2.6 13.9-7.2 17.5"/>
-    <path d="m41.2 8-.6 37.2"/>
-  </g>
-  <g fill="#151810">
-    <path d="m9.2 34 5.4-2.6-.2 1.8-4.9 2.6ZM25.1 54.5l2.8-3.1 1.1 1.1-2 3.3ZM49.8 46.7l-3-1.2.5-1 3.1.7Z"/>
-  </g>
-  <g fill="#e9ce7d">
-    <path d="m7.8 30 1-.7.7 1.2-1 .8ZM34.8 10.9l1.4.3-.4 1-1.2-.2ZM54 28l.8-.4.5 1.4-.8.3Z"/>
+  <title>Andy Zeng — abstract gold rune</title>
+  <rect width="64" height="64" fill="#ffffff"/>
+  <g fill="none" stroke="#94713b" stroke-width="3.2" stroke-linecap="square">
+    <path d="M34 13a20 20 0 1 0 17 23"/>
+    <path d="M43 9v46"/>
   </g>
 </svg>
