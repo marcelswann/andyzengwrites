@@ -131,6 +131,7 @@ body::after {
   display: flex;
   flex-wrap: nowrap; /* FIX: Forces links onto 1 row */
   align-items: center;
+  justify-content: flex-end;
   flex: 1;
 }
 
@@ -518,68 +519,43 @@ a:hover {
   .pub-title { font-size: 16.5px; }
 }
 
-/* --- HIGHLY ORNATE GOTHIC DIVIDER --- */
+/* Accent only the middle name; preserve the original type and sizing. */
+.hero-heading .name-accent {
+  color: #866b4d;
+}
+
+/* Fine engraved lines and a small, symmetrical book ornament. */
 .gothic-rule {
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   height: 34px;
   margin: 18px 0 14px;
-  opacity: 0.85;
+  color: #866b4d;
 }
 
-/* The double horizontal tracking lines */
-.gothic-rule::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  height: 5px;
-  transform: translateY(-50%);
-  background: 
-    /* Top thin line */
-    linear-gradient(to right, transparent 0%, rgba(26, 36, 33, 0.1) 10%, rgba(26, 36, 33, 0.5) 50%, rgba(26, 36, 33, 0.1) 90%, transparent 100%) top / 100% 1px no-repeat,
-    /* Bottom thin line */
-    linear-gradient(to right, transparent 0%, rgba(26, 36, 33, 0.1) 15%, rgba(26, 36, 33, 0.3) 50%, rgba(26, 36, 33, 0.1) 85%, transparent 100%) bottom / 100% 1px no-repeat;
-}
-
-/* The intricate geometric filigree center */
+.gothic-rule::before,
 .gothic-rule::after {
   content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 160px;
+  flex: 1;
+  height: 1px;
+}
+
+.gothic-rule::before {
+  background: linear-gradient(to right, transparent, rgba(134, 107, 77, 0.4));
+}
+
+.gothic-rule::after {
+  background: linear-gradient(to left, transparent, rgba(134, 107, 77, 0.4));
+}
+
+.gothic-rule svg {
+  display: block;
+  flex: 0 0 auto;
+  width: 180px;
+  max-width: 60%;
   height: 34px;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-
-  background:
-    /* 1. Center large diamond outline */
-    linear-gradient(45deg, transparent 46%, rgba(26, 36, 33, 0.8) 48%, rgba(26, 36, 33, 0.8) 52%, transparent 54%) center / 18px 18px no-repeat,
-    linear-gradient(-45deg, transparent 46%, rgba(26, 36, 33, 0.8) 48%, rgba(26, 36, 33, 0.8) 52%, transparent 54%) center / 18px 18px no-repeat,
-    
-    /* 2. Inner solid diamond */
-    linear-gradient(45deg, transparent 40%, rgba(26, 36, 33, 0.9) 40%, rgba(26, 36, 33, 0.9) 60%, transparent 60%) center / 8px 8px no-repeat,
-    
-    /* 3. Flanking medium diamonds */
-    linear-gradient(45deg, transparent 40%, rgba(26, 36, 33, 0.6) 40%, rgba(26, 36, 33, 0.6) 60%, transparent 60%) 46px 50% / 8px 8px no-repeat,
-    linear-gradient(45deg, transparent 40%, rgba(26, 36, 33, 0.6) 40%, rgba(26, 36, 33, 0.6) 60%, transparent 60%) calc(100% - 46px) 50% / 8px 8px no-repeat,
-    
-    /* 4. Outer small diamonds */
-    linear-gradient(45deg, transparent 40%, rgba(26, 36, 33, 0.4) 40%, rgba(26, 36, 33, 0.4) 60%, transparent 60%) 24px 50% / 5px 5px no-repeat,
-    linear-gradient(45deg, transparent 40%, rgba(26, 36, 33, 0.4) 40%, rgba(26, 36, 33, 0.4) 60%, transparent 60%) calc(100% - 24px) 50% / 5px 5px no-repeat,
-    
-    /* 5. Vertical crossbars (wrought iron effect) */
-    linear-gradient(to bottom, transparent 15%, rgba(26, 36, 33, 0.5) 15%, rgba(26, 36, 33, 0.5) 85%, transparent 85%) 35px 50% / 1.5px 18px no-repeat,
-    linear-gradient(to bottom, transparent 15%, rgba(26, 36, 33, 0.5) 15%, rgba(26, 36, 33, 0.5) 85%, transparent 85%) calc(100% - 35px) 50% / 1.5px 18px no-repeat,
-    
-    /* 6. Inner vertical crossbars (taller) */
-    linear-gradient(to bottom, transparent 5%, rgba(26, 36, 33, 0.6) 5%, rgba(26, 36, 33, 0.6) 95%, transparent 95%) 58px 50% / 1.5px 24px no-repeat,
-    linear-gradient(to bottom, transparent 5%, rgba(26, 36, 33, 0.6) 5%, rgba(26, 36, 33, 0.6) 95%, transparent 95%) calc(100% - 58px) 50% / 1.5px 24px no-repeat,
-
-    /* 7. Tiny dots at the very ends */
-    radial-gradient(circle, rgba(26, 36, 33, 0.5) 40%, transparent 50%) 8px 50% / 4px 4px no-repeat,
-    radial-gradient(circle, rgba(26, 36, 33, 0.5) 40%, transparent 50%) calc(100% - 8px) 50% / 4px 4px no-repeat;
 }
 
 /* Left-aligned indented epigraph */
@@ -755,4 +731,3 @@ nav a {
     width: 180px;
     height: 180px;
   }
-}
