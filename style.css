@@ -380,12 +380,22 @@ a:hover {
 }
 
 .inf-tag {
-  font-family: var(--sans);
-  font-size: 12px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  text-transform: none;
   color: var(--text);
-  font-weight: 700;
+  font-weight: 500;
+}
+
+.inf-initial {
+  font-size: 1.18em;
+}
+
+.inf-attribution {
+  font-size: 0.8em;
+  font-weight: 400;
 }
 
 .inf-rule {
