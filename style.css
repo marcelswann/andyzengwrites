@@ -390,7 +390,7 @@ a:hover {
 }
 
 .inf-initial {
-  font-size: 1.18em;
+  font-size: inherit;
 }
 
 .inf-attribution {
