@@ -380,7 +380,7 @@ a:hover {
 }
 
 .inf-tag {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 17px;
   line-height: 1.5;
   letter-spacing: 0.02em;
