@@ -383,7 +383,7 @@ a:hover {
   font-family: var(--sans);
   font-size: 12px;
   line-height: 1.5;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--text);
   font-weight: 600;
